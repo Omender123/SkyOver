@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SkyOverFlow</string>
+
+    <string name="loading">Loading...</string>
+
+    <string name="foobar">FOOBAR</string>
+</resources>

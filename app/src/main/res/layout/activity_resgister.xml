@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context=".Authentication.Resgister">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#FFFFFF">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="15dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Resgister Now"
+        android:textColor="#484848"
+        android:textSize="20dp" />
+
+
+    <EditText
+        android:id="@+id/ed_SponserId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/corner8"
+        android:drawableLeft="@drawable/ic_sponserid"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/poppins"
+        android:hint="SponserId"
+        android:inputType="text"
+        android:padding="15dp"
+        android:textColor="#000000"
+        android:textColorHint="#99000000"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/ed_firstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/corner8"
+        android:drawableLeft="@drawable/ic_username"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/poppins"
+        android:hint="First Name"
+        android:inputType="text"
+        android:padding="15dp"
+        android:textColor="#000000"
+        android:textColorHint="#99000000"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/ed_lastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/corner8"
+        android:drawableLeft="@drawable/ic_username"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/poppins"
+        android:hint="Last Name"
+        android:inputType="text"
+        android:padding="15dp"
+        android:textColor="#000000"
+        android:textColorHint="#99000000"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/ed_mobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:maxLength="10"
+        android:background="@drawable/corner8"
+        android:drawableLeft="@drawable/ic_mobile"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/poppins"
+        android:hint="Mobile No."
+        android:inputType="number"
+        android:padding="11dp"
+        android:textColor="#000000"
+        android:textColorHint="#99000000"
+        android:textSize="15dp" />
+
+
+        <LinearLayout
+            android:id="@+id/lin"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/corner8"
+            android:gravity="center|center_vertical|end"
+            android:paddingStart="5dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="-5dp"
+            android:paddingBottom="5dp">
+
+            <Spinner
+                android:id="@+id/appcompact_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="15dp"
+                android:spinnerMode="dropdown"
+                android:background="@drawable/bg_spinner"
+                android:visibility="visible" />
+        </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_res"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/corner8"
+        android:backgroundTint="@color/btn_color"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:text="Register Now"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF"
+        android:textSize="15dp" />
+
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/linear_res"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="If You A Member?"
+            android:textColor="#99000000"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:paddingStart="05dp"
+            android:text="LOGIN"
+            android:textColor="@color/btn_color"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

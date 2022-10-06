@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:backgroundTint="#B8000000"
+    android:background="@drawable/chat_round_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+  <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="60dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="16dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading_animation" />
+
+
+    <TextView
+
+        android:id="@+id/txt_loading"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="16sp"
+
+        android:textColor="@color/white"
+        android:text="Loading................"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/animationView"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

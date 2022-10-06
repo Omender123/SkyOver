@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".Authentication.VerifyOtp">
+
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="15dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Enter OTP"
+        android:textColor="#484848"
+        android:textSize="20dp" />
+
+
+
+    <com.chaos.view.PinView
+        android:id="@+id/enter_Otp"
+        style="@style/PinWidget.PinView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:cursorVisible="true"
+        android:layout_gravity="center"
+        android:inputType="numberPassword"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:cursorWidth="2dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        app:hideLineWhenFilled="false"
+        app:itemCount="6"
+        app:itemHeight="50dp"
+        app:itemRadius="6dp"
+        app:itemSpacing="14dp"
+        app:lineColor="#484848"
+        app:lineWidth="2dp"
+        app:itemWidth="50dp"
+        app:viewType="rectangle" />
+
+    <TextView
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/corner8"
+        android:backgroundTint="@color/btn_color"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:text="Submit"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/txt_resend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="end"
+        android:padding="5dp"
+        android:text="Resend OTP"
+        android:textColor="@color/btn_color"
+        android:textSize="15dp" />
+
+
+    <TextView
+        android:id="@+id/txt_showDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:visibility="gone"
+        android:justificationMode="inter_word"
+        android:textSize="16sp"
+        android:textColor="#484848"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Dear Test test Welcome to Skyover, Your UserName is S3991320 and Password 91218 Please call to 6398574029 for any query."
+        android:layout_marginStart="15dp"/>
+
+    <TextView
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/corner8"
+        android:visibility="gone"
+        android:backgroundTint="@color/btn_color"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:text="Login"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF"
+        android:textSize="15dp" />
+</LinearLayout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context=".Authentication.Login">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="15dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Login"
+        android:textColor="#484848"
+        android:textSize="20dp" />
+
+
+    <EditText
+        android:id="@+id/ed_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/corner8"
+        android:drawableLeft="@drawable/ic_username"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/poppins"
+        android:hint="Username"
+        android:inputType="text"
+        android:padding="15dp"
+        android:textColor="#000000"
+        android:textColorHint="#99000000"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/ed_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/corner8"
+        android:drawableLeft="@drawable/ic_password"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/poppins"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:textColorHint="#99000000"
+        android:textSize="15dp" />
+
+
+    <TextView
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/corner8"
+        android:backgroundTint="@color/btn_color"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:text="Login"
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/txt_forget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="end"
+        android:padding="5dp"
+        android:text="Forget Password"
+        android:textColor="@color/btn_color"
+        android:textSize="15dp" />
+
+
+    <LinearLayout
+        android:id="@+id/linear_res"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#99000000"
+            android:text="Not A Member?"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="15sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/btn_color"
+            android:text="RESISTER NOW"
+            android:paddingStart="05dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="15sp"/>
+    </LinearLayout>
+
+
+</LinearLayout>
