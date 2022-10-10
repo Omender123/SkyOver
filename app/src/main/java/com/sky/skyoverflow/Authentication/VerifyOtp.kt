@@ -25,21 +25,24 @@ class VerifyOtp : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityVerifyOtpBinding
     private val verifyOtpViewModel: VerifyOtpViewModel by viewModels()
     var mobile: String? = null
+    var type: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityVerifyOtpBinding.inflate(layoutInflater)
         setContentView(binding.root)
         loadingDialog = LoadingDialog(this)
         var bundle: Bundle? = intent.extras
-        if (bundle!=null){
+        if (bundle != null) {
             mobile = bundle.getString("mobile")
-            Log.e("mobile",mobile!!)
+            type = bundle.getString("type")
+            Log.e("mobile", mobile!!)
+            Log.e("type", type!!)
         }
 
         binding.txtResend.setOnClickListener(this)
         binding.btnSubmit.setOnClickListener(this)
         binding.btnLogin.setOnClickListener(this)
-
+        binding.imgBack.setOnClickListener(this)
         VerifyObserval()
     }
 
@@ -51,11 +54,44 @@ class VerifyOtp : AppCompatActivity(), View.OnClickListener {
                     response.data?.let {
                         Toast.makeText(
                             this,
-                           ""+ it.Message,
+                            "" + it.Message,
                             Toast.LENGTH_SHORT
                         ).show()
 
                         Log.e("Error", it.Message.toString())
+                    }
+
+                }
+
+                is NetworkResult.Error -> {
+                    hideLoadingDialog()
+                    Toast.makeText(
+                        this,
+                        response.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    Log.e("Error", response.message.toString())
+                }
+
+                is NetworkResult.Loading -> {
+                    showLoadingDialog()
+                }
+            }
+        }
+        verifyOtpViewModel.getResendForgetOTP.observe(this) { response ->
+            when (response) {
+                is NetworkResult.Success -> {
+                    hideLoadingDialog()
+                    response.data?.let {
+
+                        Log.e("Error", it.Message.toString())
+
+                        Toast.makeText(
+                            this,
+                            "" + it.Message,
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
 
                 }
@@ -109,6 +145,41 @@ class VerifyOtp : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
+        verifyOtpViewModel.getVerifyForgetPasswordOTP.observe(this) { response ->
+            when (response) {
+                is NetworkResult.Success -> {
+                    hideLoadingDialog()
+                    response.data?.let {
+                        Toast.makeText(
+                            this,
+                            it.Message,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        startActivity(Intent(this, Login::class.java))
+                        finish()
+
+                    }
+
+                }
+
+                is NetworkResult.Error -> {
+                    hideLoadingDialog()
+                    Toast.makeText(
+                        this,
+                        response.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    Log.e("Error", response.message.toString())
+                }
+
+                is NetworkResult.Loading -> {
+                    showLoadingDialog()
+                }
+            }
+        }
+
+
     }
 
     fun showLoadingDialog() {
@@ -124,26 +195,47 @@ class VerifyOtp : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(p0: View?) {
-        when(p0?.id){
-            R.id.txt_resend->{
-                showLoadingDialog()
-                verifyOtpViewModel.fetchResendOtpResponse(mobile!!)
-            }
-
-            R.id.btn_submit->{
-                if (binding.enterOtp.text.toString().trim().isEmpty()){
-                    binding.enterOtp.requestFocus()
-                    Toast.makeText(this, "Please enter OTP", Toast.LENGTH_SHORT).show()
-                }else{
+        when (p0?.id) {
+            R.id.txt_resend -> {
+                if (type.equals("resister", true)) {
                     showLoadingDialog()
-                    verifyOtpViewModel.fetchVerifyMobileResponse(mobile!!,binding.enterOtp.text.toString().trim())
+                    verifyOtpViewModel.fetchResendOtpResponse(mobile!!)
+                } else if (type.equals("forget", true)) {
+                    showLoadingDialog()
+                    verifyOtpViewModel.fetchResendForgetOTPResponse(mobile!!)
                 }
 
             }
 
-            R.id.btn_login->{
-                startActivity(Intent(this,Login::class.java))
+            R.id.btn_submit -> {
+                if (binding.enterOtp.text.toString().trim().isEmpty()) {
+                    binding.enterOtp.requestFocus()
+                    Toast.makeText(this, "Please enter OTP", Toast.LENGTH_SHORT).show()
+                } else {
+                    if (type.equals("resister", true)) {
+                        showLoadingDialog()
+                        verifyOtpViewModel.fetchVerifyMobileResponse(
+                            mobile!!,
+                            binding.enterOtp.text.toString().trim()
+                        )
+                    } else if (type.equals("forget", true)) {
+                        showLoadingDialog()
+                        verifyOtpViewModel.fetchverifyForgetPasswordOTPResponse(
+                            mobile!!,
+                            binding.enterOtp.text.toString().trim()
+                        )
+                    }
+
+                }
+
+            }
+
+            R.id.btn_login -> {
+                startActivity(Intent(this, Login::class.java))
                 finish()
+            }
+            R.id.img_back -> {
+                onBackPressed()
             }
         }
     }

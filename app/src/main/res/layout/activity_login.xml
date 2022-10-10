@@ -109,8 +109,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/btn_color"
-            android:text="RESISTER NOW"
+            android:text="Register NOW"
             android:paddingStart="05dp"
+            android:textAllCaps="true"
             android:fontFamily="@font/poppins_medium"
             android:textSize="15sp"/>
     </LinearLayout>

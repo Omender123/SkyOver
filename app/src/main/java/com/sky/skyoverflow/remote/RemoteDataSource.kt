@@ -21,4 +21,13 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
     suspend fun ResendOTP(mobile: String) =
         apiService.ResendOTP(mobile)
 
+    suspend fun ForgetPassword(mobile: String) =
+        apiService.ForgotPassword(mobile)
+
+    suspend fun verifyForgetPasswordOTP(mobile: String, otp: String) =
+        apiService.verifyForgetPasswordOTP(mobile, otp)
+
+    suspend fun ResendForgetOTP(mobile: String) =
+        apiService.ResendForgetOTP(mobile)
+
 }

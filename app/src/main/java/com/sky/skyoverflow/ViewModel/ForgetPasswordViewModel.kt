@@ -6,32 +6,30 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.sky.skyoverflow.Model.CheckLoginResponse
+import com.sky.skyoverflow.Model.CommonRespons
+import com.sky.skyoverflow.Repositories.ForgetPasswordRespository
 import com.sky.skyoverflow.Repositories.LoginRepository
 import com.sky.skyoverflow.Utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-
 import javax.inject.Inject
 
-
 @HiltViewModel
-class LoginViewModel @Inject constructor
-    (
-    private val loginRepository: LoginRepository,
+class ForgetPasswordViewModel @Inject constructor(
+    private val forgetPasswordRespository: ForgetPasswordRespository,
     application: Application
 ) : AndroidViewModel(application) {
 
 
-    private val _response: MutableLiveData<NetworkResult<CheckLoginResponse>> = MutableLiveData()
-    val response: LiveData<NetworkResult<CheckLoginResponse>> = _response
+    private val _response: MutableLiveData<NetworkResult<CommonRespons>> = MutableLiveData()
+    val ForgetPassword: LiveData<NetworkResult<CommonRespons>> = _response
 
 
-    fun fetchCheckLoginResponse(username:String,password:String) = viewModelScope.launch {
+    fun fetchForgetPasswordResponse(mobile: String) = viewModelScope.launch {
 
-        loginRepository.getCheckLogin(username, password).collect { values ->
+        forgetPasswordRespository.ForgetrPassword(mobile).collect { values ->
             _response.value = values
         }
     }
-
 
 }

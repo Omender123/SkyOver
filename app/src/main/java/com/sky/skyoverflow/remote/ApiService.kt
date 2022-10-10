@@ -44,4 +44,26 @@ interface ApiService {
     suspend fun ResendOTP(
         @Field("Mobile") mobile:String
     ): Response<CheckLoginResponse>
+
+
+    @GET("Authentication/ForgotPassword/{Mobile}")
+    suspend fun ForgotPassword(
+        @Path("Mobile") Mobile: String
+    ): Response<CommonRespons>
+
+    @GET("Authentication/ResendForgetOTP/{Mobile}")
+    suspend fun ResendForgetOTP(
+        @Path("Mobile") Mobile: String
+    ): Response<CommonRespons>
+
+
+    @FormUrlEncoded
+    @POST("Authentication/verifyForgetPasswordOTP")
+    suspend fun verifyForgetPasswordOTP(
+        @Field("Mobile") mobile:String,
+        @Field("OtpCode") otp:String
+    ): Response<CommonRespons>
+
+
 }
+

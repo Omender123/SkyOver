@@ -33,6 +33,7 @@ class Login : AppCompatActivity(), View.OnClickListener {
 
         binding.btnLogin.setOnClickListener(this)
         binding.linearRes.setOnClickListener(this)
+        binding.txtForget.setOnClickListener(this)
     }
 
 
@@ -108,6 +109,10 @@ class Login : AppCompatActivity(), View.OnClickListener {
             {
                 startActivity(Intent(this,Resgister::class.java))
 
+            }
+
+            R.id.txt_forget ->{
+                startActivity(Intent(this,ForgetActivity::class.java))
             }
 
         }

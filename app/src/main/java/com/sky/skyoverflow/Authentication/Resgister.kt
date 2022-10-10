@@ -44,6 +44,7 @@ class Resgister : AppCompatActivity(), View.OnClickListener {
 
         binding.btnRes.setOnClickListener(this)
         binding.linearRes.setOnClickListener(this)
+        binding.imgBack.setOnClickListener(this)
 
         resgisterViewModel.fetchStateResponse()
         StateObserveral()
@@ -61,7 +62,7 @@ class Resgister : AppCompatActivity(), View.OnClickListener {
                         var data =JSONObject(response.data!!.string())
                         Log.e("response", ""+data.getString("Data"))
                         Toast.makeText(this,""+data.getString("Message"),Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this,VerifyOtp::class.java).putExtra("mobile",Mobile!!))
+                        startActivity(Intent(this,VerifyOtp::class.java).putExtra("mobile",Mobile!!).putExtra("type","resister"))
                     }
 
                     is NetworkResult.Error->{
@@ -192,6 +193,10 @@ class Resgister : AppCompatActivity(), View.OnClickListener {
 
             R.id.linear_res -> {
                 startActivity(Intent(this, Login::class.java))
+            }
+
+            R.id.img_back ->{
+                onBackPressed()
             }
         }
     }

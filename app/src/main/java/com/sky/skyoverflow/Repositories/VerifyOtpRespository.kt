@@ -30,4 +30,17 @@ class VerifyOtpRespository @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
+
+    suspend fun verifyForgetPasswordOTP(mobile: String, Otp: String): Flow<NetworkResult<CommonRespons>> {
+        return flow<NetworkResult<CommonRespons>> {
+            emit(safeApiCall { remoteDataSource.verifyForgetPasswordOTP(mobile, Otp) })
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun ResendForgetOTP(mobile: String): Flow<NetworkResult<CommonRespons>> {
+        return flow<NetworkResult<CommonRespons>> {
+            emit(safeApiCall { remoteDataSource.ResendForgetOTP(mobile) })
+        }.flowOn(Dispatchers.IO)
+    }
+
 }

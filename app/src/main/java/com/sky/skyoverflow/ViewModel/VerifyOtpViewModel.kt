@@ -25,15 +25,27 @@ class VerifyOtpViewModel @Inject constructor
 ) : AndroidViewModel(application) {
 
 
-    private val getVerifyOtpResponse: MutableLiveData<NetworkResult<CommonRespons>> = MutableLiveData()
+    private val getVerifyOtpResponse: MutableLiveData<NetworkResult<CommonRespons>> =
+        MutableLiveData()
     val getVerifyOtp: LiveData<NetworkResult<CommonRespons>> = getVerifyOtpResponse
 
     private val getResendOtpResponse: MutableLiveData<NetworkResult<CheckLoginResponse>> =
         MutableLiveData()
     val getResendOtp: LiveData<NetworkResult<CheckLoginResponse>> = getResendOtpResponse
 
+
+    private val getverifyForgetPasswordOTPResponse: MutableLiveData<NetworkResult<CommonRespons>> =
+        MutableLiveData()
+    val getVerifyForgetPasswordOTP: LiveData<NetworkResult<CommonRespons>> =
+        getverifyForgetPasswordOTPResponse
+
+    private val getResendForgetOTPResponse: MutableLiveData<NetworkResult<CommonRespons>> =
+        MutableLiveData()
+    val getResendForgetOTP: LiveData<NetworkResult<CommonRespons>> = getResendForgetOTPResponse
+
+
     fun fetchVerifyMobileResponse(mobile: String, Otp: String) = viewModelScope.launch {
-        verifyOtpRespository.VerifyMobile(mobile,Otp).collect { values ->
+        verifyOtpRespository.VerifyMobile(mobile, Otp).collect { values ->
             getVerifyOtpResponse.value = values
         }
     }
@@ -42,6 +54,20 @@ class VerifyOtpViewModel @Inject constructor
 
         verifyOtpRespository.ResendOtp(mobile).collect { values ->
             getResendOtpResponse.value = values
+        }
+    }
+
+
+    fun fetchverifyForgetPasswordOTPResponse(mobile: String, Otp: String) = viewModelScope.launch {
+        verifyOtpRespository.verifyForgetPasswordOTP(mobile, Otp).collect { values ->
+            getverifyForgetPasswordOTPResponse.value = values
+        }
+    }
+
+    fun fetchResendForgetOTPResponse(mobile: String) = viewModelScope.launch {
+
+        verifyOtpRespository.ResendForgetOTP(mobile).collect { values ->
+            getResendForgetOTPResponse.value = values
         }
     }
 }
