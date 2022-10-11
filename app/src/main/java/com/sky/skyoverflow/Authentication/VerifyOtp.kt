@@ -1,23 +1,26 @@
 package com.sky.skyoverflow.Authentication
 
+
 import android.content.Intent
-import android.opengl.Visibility
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import com.sky.skyoverflow.R
+import com.sky.skyoverflow.Utils.AppUtils
+import com.sky.skyoverflow.Utils.CustomTypefaceSpan
 import com.sky.skyoverflow.Utils.LoadingDialog
 import com.sky.skyoverflow.Utils.NetworkResult
-import com.sky.skyoverflow.ViewModel.ResgisterViewModel
 import com.sky.skyoverflow.ViewModel.VerifyOtpViewModel
-import com.sky.skyoverflow.databinding.ActivityLoginBinding
 import com.sky.skyoverflow.databinding.ActivityVerifyOtpBinding
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class VerifyOtp : AppCompatActivity(), View.OnClickListener {
@@ -30,6 +33,7 @@ class VerifyOtp : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityVerifyOtpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        AppUtils.setStatusBarGradiant(this)
         loadingDialog = LoadingDialog(this)
         var bundle: Bundle? = intent.extras
         if (bundle != null) {
@@ -37,6 +41,24 @@ class VerifyOtp : AppCompatActivity(), View.OnClickListener {
             type = bundle.getString("type")
             Log.e("mobile", mobile!!)
             Log.e("type", type!!)
+            val wordtoSpan: Spannable =
+                SpannableString("OTP has been sent to "+mobile)
+
+            val typeface = ResourcesCompat.getFont(this, R.font.poppins_bold)
+
+            wordtoSpan.setSpan(
+                CustomTypefaceSpan("",typeface),
+                21,
+                wordtoSpan.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            wordtoSpan.setSpan(
+               ForegroundColorSpan(resources.getColor(R.color.title_txt)),
+                21,
+                wordtoSpan.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            binding.txtHint.setText(wordtoSpan)
         }
 
         binding.txtResend.setOnClickListener(this)
@@ -122,6 +144,7 @@ class VerifyOtp : AppCompatActivity(), View.OnClickListener {
                         binding.enterOtp.visibility = View.GONE
                         binding.txtResend.visibility = View.GONE
                         binding.txt.visibility = View.GONE
+                        binding.txtHint.visibility = View.GONE
                         binding.txtShowDetails.setText(it.Message)
                         binding.txtShowDetails.visibility = View.VISIBLE
                         binding.btnLogin.visibility = View.VISIBLE

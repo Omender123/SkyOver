@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/Dashboard">
+
+    <fragment
+        android:id="@+id/Dashboard"
+        android:name="com.sky.skyoverflow.Fragment.Deshboard_fragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_deshboard" />
+    <fragment
+        android:id="@+id/Members"
+        android:name="com.sky.skyoverflow.Fragment.MemberFragment"
+        android:label="Members"
+        tools:layout="@layout/fragment_member" />
+    <fragment
+        android:id="@+id/Notification"
+        android:name="com.sky.skyoverflow.Fragment.NotificationFragment"
+        android:label="Notification"
+        tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/Portfolio"
+        android:name="com.sky.skyoverflow.Fragment.PortfolioFragment"
+        android:label="Portfolio"
+        tools:layout="@layout/fragment_portfolio" />
+</navigation>

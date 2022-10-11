@@ -8,15 +8,31 @@
     android:orientation="vertical"
     tools:context=".Authentication.Login">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:background="@color/purple_700"
+        android:gravity="center"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="90dp"
+            android:src="@mipmap/logo"/>
+    </LinearLayout>
+
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="45dp"
         android:layout_marginRight="15dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Login"
-        android:textColor="#484848"
+        android:textColor="@color/title_txt"
         android:textSize="20dp" />
 
 
@@ -35,7 +51,7 @@
         android:inputType="text"
         android:padding="15dp"
         android:textColor="#000000"
-        android:textColorHint="#99000000"
+        android:textColorHint="@color/hint_txt"
         android:textSize="15dp" />
 
     <EditText
@@ -53,16 +69,28 @@
         android:inputType="textPassword"
         android:padding="10dp"
         android:textColor="#000000"
-        android:textColorHint="#99000000"
+        android:textColorHint="@color/hint_txt"
         android:textSize="15dp" />
 
-
+    <TextView
+        android:id="@+id/txt_forget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/poppins"
+        android:gravity="end"
+        android:padding="5dp"
+        android:text="Forget Password?"
+        android:textColor="@color/btn_color"
+        android:textSize="15dp" />
     <TextView
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="15dp"
         android:background="@drawable/corner8"
         android:backgroundTint="@color/btn_color"
@@ -73,19 +101,7 @@
         android:textColor="#FFFFFF"
         android:textSize="15dp" />
 
-    <TextView
-        android:id="@+id/txt_forget"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
-        android:fontFamily="@font/poppins_medium"
-        android:gravity="end"
-        android:padding="5dp"
-        android:text="Forget Password"
-        android:textColor="@color/btn_color"
-        android:textSize="15dp" />
+
 
 
     <LinearLayout
@@ -101,9 +117,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#99000000"
-            android:text="Not A Member?"
-            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/hint_txt"
+            android:text="Don’t have an account? "
+            android:fontFamily="@font/poppins"
             android:textSize="15sp"/>
         <TextView
             android:layout_width="wrap_content"
@@ -112,7 +128,7 @@
             android:text="Register NOW"
             android:paddingStart="05dp"
             android:textAllCaps="true"
-            android:fontFamily="@font/poppins_medium"
+            android:fontFamily="@font/poppins"
             android:textSize="15sp"/>
     </LinearLayout>
 

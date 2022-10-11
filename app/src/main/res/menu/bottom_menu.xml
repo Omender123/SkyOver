@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@id/Dashboard"
+        android:icon="@drawable/ic_deshborad"
+        android:menuCategory="secondary"
+        android:title="DASHBOARD" />
+    <item
+        android:id="@id/Portfolio"
+        android:icon="@drawable/ic_portfolio"
+        android:menuCategory="secondary"
+        android:title="PORTFOLIO" />
+
+    <item
+        android:id="@id/Members"
+        android:icon="@drawable/ic_member"
+        android:menuCategory="secondary"
+        android:title="MEMBERS" />
+    <item
+        android:id="@id/Notification"
+        android:icon="@drawable/ic_notification"
+        android:menuCategory="secondary"
+        android:title="NOTIFICATIONS" />
+
+
+</menu>

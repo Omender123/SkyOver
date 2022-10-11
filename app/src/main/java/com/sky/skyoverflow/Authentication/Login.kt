@@ -7,7 +7,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.sky.skyoverflow.MainActivity
 import com.sky.skyoverflow.R
+import com.sky.skyoverflow.Utils.AppUtils
 import com.sky.skyoverflow.Utils.LoadingDialog
 import com.sky.skyoverflow.Utils.NetworkResult
 import com.sky.skyoverflow.ViewModel.LoginViewModel
@@ -28,6 +30,7 @@ class Login : AppCompatActivity(), View.OnClickListener {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         loadingDialog = LoadingDialog(this)
+        AppUtils.setStatusBarGradiant(this)
 
         LoginObserveral();
 
@@ -99,8 +102,10 @@ class Login : AppCompatActivity(), View.OnClickListener {
                     binding.edPass.requestFocus()
                     Toast.makeText(this,"Please enter password",Toast.LENGTH_SHORT).show()
                 } else {
-                    showLoadingDialog()
-                    loginViewModel.fetchCheckLoginResponse(username!!,password!!)
+                   // showLoadingDialog()
+                    //loginViewModel.fetchCheckLoginResponse(username!!,password!!)
+                    startActivity(Intent(this,MainActivity::class.java))
+                    finish()
                 }
             }
 

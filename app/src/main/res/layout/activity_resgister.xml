@@ -32,7 +32,7 @@
         android:layout_marginRight="15dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Register Now"
-        android:textColor="#484848"
+        android:textColor="@color/title_txt"
         android:textSize="20dp" />
 
 
@@ -51,7 +51,7 @@
         android:inputType="text"
         android:padding="15dp"
         android:textColor="#000000"
-        android:textColorHint="#99000000"
+        android:textColorHint="@color/hint_txt"
         android:textSize="15dp" />
 
     <EditText
@@ -69,7 +69,7 @@
         android:inputType="text"
         android:padding="15dp"
         android:textColor="#000000"
-        android:textColorHint="#99000000"
+        android:textColorHint="@color/hint_txt"
         android:textSize="15dp" />
 
     <EditText
@@ -87,7 +87,7 @@
         android:inputType="text"
         android:padding="15dp"
         android:textColor="#000000"
-        android:textColorHint="#99000000"
+        android:textColorHint="@color/hint_txt"
         android:textSize="15dp" />
 
     <EditText
@@ -106,7 +106,7 @@
         android:inputType="number"
         android:padding="11dp"
         android:textColor="#000000"
-        android:textColorHint="#99000000"
+        android:textColorHint="@color/hint_txt"
         android:textSize="15dp" />
 
 
@@ -169,15 +169,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:text="If You A Member?"
-            android:textColor="#99000000"
+            android:fontFamily="@font/poppins"
+            android:text="Do you have an account? "
+            android:textColor="@color/hint_txt"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
+            android:fontFamily="@font/poppins"
             android:paddingStart="05dp"
             android:text="LOGIN"
             android:textColor="@color/btn_color"

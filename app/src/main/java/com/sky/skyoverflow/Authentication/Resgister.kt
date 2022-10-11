@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModel
 import com.sky.skyoverflow.Model.Data1
 import com.sky.skyoverflow.Model.RequestBody.ResgisterBody
 import com.sky.skyoverflow.R
+import com.sky.skyoverflow.Utils.AppUtils
 import com.sky.skyoverflow.Utils.LoadingDialog
 import com.sky.skyoverflow.Utils.NetworkResult
 import com.sky.skyoverflow.ViewModel.ResgisterViewModel
@@ -40,6 +41,7 @@ class Resgister : AppCompatActivity(), View.OnClickListener {
 
         binding = ActivityResgisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        AppUtils.setStatusBarGradiant(this)
         loadingDialog = LoadingDialog(this)
 
         binding.btnRes.setOnClickListener(this)

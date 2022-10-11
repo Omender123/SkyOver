@@ -26,8 +26,19 @@
         android:layout_marginRight="15dp"
         android:fontFamily="@font/poppins_bold"
         android:text="Enter OTP"
-        android:textColor="#484848"
+        android:textColor="@color/title_txt"
         android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/txt_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:fontFamily="@font/poppins"
+        android:text="OTP has been sent to 8766372989"
+        android:textColor="@color/hint_txt"
+        android:textSize="15dp" />
 
 
 
@@ -51,7 +62,7 @@
         app:itemHeight="45dp"
         app:itemRadius="6dp"
         app:itemSpacing="12dp"
-        app:lineColor="#484848"
+        app:lineColor="#DDDDDD"
         app:lineWidth="2dp"
         app:itemWidth="45dp"
         app:viewType="rectangle" />
@@ -61,13 +72,13 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:layout_marginRight="15dp"
         android:background="@drawable/corner8"
         android:backgroundTint="@color/btn_color"
         android:fontFamily="@font/poppins_bold"
         android:gravity="center"
-        android:text="Submit"
+        android:text="verify"
         android:textAllCaps="true"
         android:textColor="#FFFFFF"
         android:textSize="15dp" />
