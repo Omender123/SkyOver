@@ -35,21 +35,31 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration.Builder(navController.graph)
             .setDrawerLayout(binding.drawer)
             .build()
-        NavigationUI.setupWithNavController(binding.navigationView, navController);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(binding.navigationView, navController);
         NavigationUI.setupWithNavController(
             binding.includedLayout.toolbar,
             navController,
             binding.drawer
         );
-        binding.includedLayout.toolbar.navigationIcon =
-            resources.getDrawable(R.drawable.ic_menu_icon)
+        binding.includedLayout.toolbar.navigationIcon = resources.getDrawable(R.drawable.ic_menu_icon)
         NavigationUI.setupWithNavController(binding.includedLayout.bottomNavigation, navController)
 
         navController?.addOnDestinationChangedListener { controller, destination, arguments ->
             if (destination.id == R.id.Dashboard ) {
                 binding.includedLayout.toolbar.navigationIcon =
                     resources.getDrawable(R.drawable.ic_menu_icon)
+                binding.includedLayout.txtName.visibility = View.VISIBLE
+                binding.includedLayout.txtWel.visibility = View.VISIBLE
+                binding.includedLayout.txtLebel.visibility = View.GONE
+                binding.includedLayout.bottomNavigation.visibility = View.VISIBLE
+            }else{
+                binding.includedLayout.toolbar.navigationIcon =
+                    resources.getDrawable(R.drawable.ic_back_arrow)
+                binding.includedLayout.txtName.visibility = View.GONE
+                binding.includedLayout.txtWel.visibility = View.GONE
+                binding.includedLayout.txtLebel.visibility = View.VISIBLE
+                binding.includedLayout.txtLebel.text = destination.label
                 binding.includedLayout.bottomNavigation.visibility = View.VISIBLE
             }
         }
@@ -58,7 +68,10 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onSupportNavigateUp()
+        return NavigationUI.navigateUp(
+            navController,
+            appBarConfiguration
+        )//navController.navigateUp() || super.onSupportNavigateUp()
     }
 
     override fun onBackPressed() {
