@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,14 +8,11 @@
     android:background="#FFFFFF"
     android:orientation="vertical"
     tools:context=".Authentication.Resgister">
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="#FFFFFF">
-
         <ImageView
             android:id="@+id/img_back"
             android:layout_width="wrap_content"
@@ -22,8 +20,6 @@
             android:padding="15dp"
             android:scaleType="fitXY"
             android:src="@drawable/ic_baseline_arrow_back_24"/>
-
-
         <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -129,7 +125,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="15dp"
-                android:spinnerMode="dropdown"
+                android:spinnerMode="dialog"
                 android:background="@drawable/bg_spinner"
                 android:visibility="visible" />
         </LinearLayout>

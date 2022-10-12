@@ -1,13 +1,34 @@
 package com.sky.skyoverflow.Fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
+import com.sky.skyoverflow.MainActivity
 import com.sky.skyoverflow.R
+import com.sky.skyoverflow.SharedPerfence.MyPreferences
+import com.sky.skyoverflow.SharedPerfence.PrefConf
+import com.sky.skyoverflow.Utils.LoadingDialog
+import com.sky.skyoverflow.Utils.NetworkResult
+import com.sky.skyoverflow.ViewModel.DeshboardViewModel
+import com.sky.skyoverflow.ViewModel.LoginViewModel
+import com.sky.skyoverflow.databinding.ActivityLoginBinding
+import com.sky.skyoverflow.databinding.FragmentDeshboardBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Deshboard_fragment : Fragment() {
+    lateinit var loadingDialog: LoadingDialog
+    private lateinit var binding: FragmentDeshboardBinding
+    private val deshboardViewModel: DeshboardViewModel by viewModels()
+    private var userId: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -17,6 +38,64 @@ class Deshboard_fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_deshboard, container, false)
+        binding = FragmentDeshboardBinding.inflate(inflater, container, false)
+        loadingDialog = LoadingDialog(requireContext())
+        userId =
+            MyPreferences.getInstance(requireContext()).getString(PrefConf.USER_SPONSER_ID, null)
+
+        deshboardViewModel.fetchDeshBoardResponse(userId!!)
+        Log.e("userId", userId!!)
+        GetDashboardObservel();
+        return binding.root
+    }
+
+    private fun GetDashboardObservel() {
+        showLoadingDialog()
+        deshboardViewModel.GetDeshBoardResponse.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is NetworkResult.Success -> {
+                    hideLoadingDialog()
+                    response.data?.let {
+                        binding.txtTotalIn.text =
+                            resources.getString(R.string.rupee_sign) + it.Data[0].TotalIncome
+                        binding.txtMthIn.text =
+                            resources.getString(R.string.rupee_sign) + it.Data[0].matchingincome
+                        binding.txtLoyIn.text =
+                            resources.getString(R.string.rupee_sign) + it.Data[0].singlelineincome
+                        binding.txtLevelIn.text =
+                            resources.getString(R.string.rupee_sign) + it.Data[0].LevelIncome
+                    }
+
+                }
+
+                is NetworkResult.Error -> {
+                    hideLoadingDialog()
+                    Toast.makeText(
+                        requireContext(),
+                        response.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    Log.e("Error", response.message.toString())
+                }
+
+                is NetworkResult.Loading -> {
+                    showLoadingDialog()
+                }
+            }
+        }
+    }
+
+
+    fun showLoadingDialog() {
+        if (this::loadingDialog.isInitialized && !loadingDialog.isShowing()) {
+            loadingDialog.show()
+        }
+    }
+
+    fun hideLoadingDialog() {
+        if (this::loadingDialog.isInitialized && loadingDialog.isShowing()) {
+            loadingDialog.dismiss()
+        }
     }
 }

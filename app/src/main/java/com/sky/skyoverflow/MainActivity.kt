@@ -1,23 +1,34 @@
 package com.sky.skyoverflow
 
 
+import android.annotation.SuppressLint
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
-import androidx.appcompat.app.ActionBar
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
+import com.sky.skyoverflow.Authentication.Login
+import com.sky.skyoverflow.SharedPerfence.MyPreferences
+import com.sky.skyoverflow.SharedPerfence.PrefConf
 import com.sky.skyoverflow.Utils.LoadingDialog
 import com.sky.skyoverflow.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.inculde_layout.view.*
+import java.io.File
 
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener {
     lateinit var loadingDialog: LoadingDialog
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
@@ -31,6 +42,8 @@ class MainActivity : AppCompatActivity() {
 
         navController = findNavController(R.id.main_fragment)
         setSupportActionBar(binding.includedLayout.toolbar);
+        binding.includedLayout.txtName.text =
+            MyPreferences.getInstance(this).getString(PrefConf.USER_NAME, "GUEST")
 
         appBarConfiguration = AppBarConfiguration.Builder(navController.graph)
             .setDrawerLayout(binding.drawer)
@@ -42,18 +55,19 @@ class MainActivity : AppCompatActivity() {
             navController,
             binding.drawer
         );
-        binding.includedLayout.toolbar.navigationIcon = resources.getDrawable(R.drawable.ic_menu_icon)
+        binding.includedLayout.toolbar.navigationIcon =
+            resources.getDrawable(R.drawable.ic_menu_icon)
         NavigationUI.setupWithNavController(binding.includedLayout.bottomNavigation, navController)
 
         navController?.addOnDestinationChangedListener { controller, destination, arguments ->
-            if (destination.id == R.id.Dashboard ) {
+            if (destination.id == R.id.Dashboard) {
                 binding.includedLayout.toolbar.navigationIcon =
                     resources.getDrawable(R.drawable.ic_menu_icon)
                 binding.includedLayout.txtName.visibility = View.VISIBLE
                 binding.includedLayout.txtWel.visibility = View.VISIBLE
                 binding.includedLayout.txtLebel.visibility = View.GONE
                 binding.includedLayout.bottomNavigation.visibility = View.VISIBLE
-            }else{
+            } else {
                 binding.includedLayout.toolbar.navigationIcon =
                     resources.getDrawable(R.drawable.ic_back_arrow)
                 binding.includedLayout.txtName.visibility = View.GONE
@@ -63,7 +77,14 @@ class MainActivity : AppCompatActivity() {
                 binding.includedLayout.bottomNavigation.visibility = View.VISIBLE
             }
         }
+        moreNavigationOptions()
+    }
 
+    private fun moreNavigationOptions() {
+        val menu: Menu = binding.navigationView.getMenu()
+
+        val logout: MenuItem = menu.findItem(R.id.nav_logout)
+        logout.setOnMenuItemClickListener(this)
     }
 
 
@@ -94,5 +115,68 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onMenuItemClick(p0: MenuItem): Boolean {
+        when (p0.itemId) {
+            R.id.nav_logout -> {
+                LogoutAlertBox()
+            }
+        }
+        return true
+    }
 
+    private fun LogoutAlertBox() {
+
+        val alertDialogBuilder = AlertDialog.Builder(this@MainActivity)
+
+        alertDialogBuilder.setTitle(resources.getString(R.string.app_name))
+
+        alertDialogBuilder.setIcon(R.mipmap.ic_launcher_round)
+        alertDialogBuilder
+            .setMessage("Are you sure to Logout !!!!!")
+            .setCancelable(false)
+            .setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, id ->
+                MyPreferences.getInstance(this@MainActivity).clearPreferences()
+                clearApplicationData()
+                Toast.makeText(this@MainActivity, "Logout Successfully", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, Login::class.java))
+                finish()
+            })
+            .setNegativeButton("No",{ dialog, id -> dialog.cancel() })
+
+        // create alert dialog
+        val alertDialog: AlertDialog = alertDialogBuilder.create()
+
+        alertDialog.show()
+    }
+
+    @SuppressLint("LongLogTag")
+    fun clearApplicationData() {
+        val cache: File = cacheDir
+        val appDir = File(cache.getParent())
+        if (appDir.exists()) {
+            val children: Array<String> = appDir.list()
+            for (s in children) {
+                if (s != "lib") {
+                    deleteDir(File(appDir, s))
+                    Log.i(
+                        "EEEEEERRRRRRROOOOOOORRRR",
+                        "**************** File /data/data/APP_PACKAGE/$s DELETED *******************"
+                    )
+                }
+            }
+        }
+    }
+
+    fun deleteDir(dir: File?): Boolean {
+        if (dir != null && dir.isDirectory()) {
+            val children: Array<String> = dir.list()
+            for (i in children.indices) {
+                val success = deleteDir(File(dir, children[i]))
+                if (!success) {
+                    return false
+                }
+            }
+        }
+        return dir!!.delete()
+    }
 }

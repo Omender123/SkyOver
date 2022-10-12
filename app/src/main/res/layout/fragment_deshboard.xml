@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/purple_700"
     tools:context=".Fragment.Deshboard_fragment">
 
@@ -13,58 +13,58 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
-        <RelativeLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
-            android:background="@drawable/ic_desh_back">
+            android:fontFamily="@font/poppins"
+            android:text="My Wallet"
+            android:textColor="@color/btn_color"
+            android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/txt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_toStartOf="@id/btn_add"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Main Balance"
-                android:textColor="@color/white"
-                android:textSize="16dp" />
-
-            <TextView
-                android:id="@+id/txt_balance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="05dp"
-                android:layout_marginEnd="15dp"
-                android:layout_toStartOf="@id/btn_add"
-                android:fontFamily="@font/poppins_medium"
-                android:text="₹ 5000.49"
-                android:textColor="@color/white"
-                android:textSize="24dp" />
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:orientation="horizontal"
+            android:weightSum="4">
 
             <ImageView
-                android:id="@+id/btn_add"
-                android:layout_width="wrap_content"
+                android:id="@+id/img_wallets"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="30dp"
-                android:src="@drawable/ic_plus_button" />
-        </RelativeLayout>
+                android:layout_marginStart="-35dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_walllets" />
 
+            <ImageView
+                android:id="@+id/img_add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_add_fund" />
+
+            <ImageView
+                android:id="@+id/img_transfer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_transfer" />
+
+            <ImageView
+                android:id="@+id/img_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="-35dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_history" />
+
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -81,8 +81,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
             android:orientation="horizontal"
             android:weightSum="4">
@@ -91,6 +91,7 @@
                 android:id="@+id/layout_mobile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginStart="-35dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -104,13 +105,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:text="Mobile"
                     android:gravity="center"
+                    android:text="Mobile"
                     android:textColor="#D902448A"
                     android:textSize="16dp" />
 
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/layout_electric"
                 android:layout_width="match_parent"
@@ -128,13 +130,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:text="Electricity"
                     android:gravity="center"
+                    android:text="Electricity"
                     android:textColor="#D902448A"
                     android:textSize="16dp" />
 
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/layout_water"
                 android:layout_width="match_parent"
@@ -152,16 +155,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:text="Water"
                     android:gravity="center"
+                    android:text="Water"
                     android:textColor="#D902448A"
                     android:textSize="16dp" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/layout_dth"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginEnd="-35dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -175,8 +180,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:text="DTH"
                     android:gravity="center"
+                    android:text="DTH"
                     android:textColor="#D902448A"
                     android:textSize="16dp" />
 
@@ -185,59 +190,294 @@
 
         </LinearLayout>
 
-        
+
         <androidx.cardview.widget.CardView
             android:id="@+id/card_share"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginEnd="15dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="25dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="2dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
             app:cardBackgroundColor="@color/white"
-            android:layout_marginBottom="15dp">
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical">
+
                 <ImageView
                     android:id="@+id/img"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_gift"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginEnd="15dp"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="15dp"/>
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/ic_gift" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
                     android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
                     android:layout_toStartOf="@+id/img1"
                     android:layout_toEndOf="@+id/img"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center_vertical"
                     android:text="Refer &amp; Earn"
                     android:textColor="#383838"
-                    android:gravity="center_vertical"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/poppins_medium"/>
+                    android:textSize="16sp" />
+
                 <ImageView
                     android:id="@+id/img1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_share"
-                    android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginEnd="15dp"
+                    android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginStart="15dp"/>
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/ic_share" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
-        
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@color/white"
+            android:paddingBottom="5dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#1A383838"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingStart="12dp"
+                    android:paddingTop="15dp"
+                    android:paddingEnd="12dp">
+
+                    <TextView
+                        android:id="@+id/txt_mem"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toStartOf="@+id/txt_buy"
+                        android:fontFamily="@font/poppins"
+                        android:text="Membership Plan"
+                        android:textColor="@color/title_txt"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_mem"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toStartOf="@+id/txt_buy"
+                        android:fontFamily="@font/poppins"
+                        android:text="Invest &amp; Earn More"
+                        android:textColor="#8A383838"
+                        android:textSize="12sp" />
+
+
+                    <TextView
+                        android:id="@+id/txt_buy"
+                        android:layout_width="60dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/chat_round_background"
+                        android:backgroundTint="@color/btn_color"
+                        android:elevation="2dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:gravity="center"
+                        android:text="Buy"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:fontFamily="@font/poppins"
+                    android:paddingStart="15dp"
+                    android:paddingTop="15dp"
+                    android:paddingEnd="15dp"
+                    android:text="Total Earnings"
+                    android:textColor="@color/txt_38"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/txt_total_in"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:fontFamily="@font/poppins_medium"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/txt_38"
+                    android:textSize="18dp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="85dp"
+                        android:layout_marginEnd="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:paddingStart="12dp"
+                        android:paddingTop="16sp"
+                        android:paddingEnd="12dp">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Matching Income"
+                            android:textColor="@color/txt_38"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/txt_mth_in"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textColor="@color/txt_38"
+                            android:textSize="16dp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="85dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:paddingStart="12dp"
+                        android:paddingTop="16sp"
+                        android:paddingEnd="12dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Single Line Income"
+                            android:textColor="@color/txt_38"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/txt_loy_in"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textColor="@color/txt_38"
+                            android:textSize="16dp" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="85dp"
+                        android:layout_marginEnd="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:paddingStart="12dp"
+                        android:paddingTop="16sp"
+                        android:paddingEnd="12dp">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Level Income"
+                            android:textColor="@color/txt_38"
+                            android:textSize="12dp" />
+
+                        <TextView
+                            android:id="@+id/txt_level_in"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:textColor="@color/txt_38"
+                            android:textSize="16dp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="85dp"
+                        android:layout_weight="1"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableRight="@drawable/ic_view_all"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="center|start"
+                            android:text="View ALL "
+                            android:textColor="@color/title_txt"
+                            android:textSize="12dp" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
     </LinearLayout>
 
 

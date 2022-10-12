@@ -4,6 +4,7 @@ package com.sky.skyoverflow.remote
 import com.sky.skyoverflow.Authentication.Resgister
 import com.sky.skyoverflow.Model.CheckLoginResponse
 import com.sky.skyoverflow.Model.CommonRespons
+import com.sky.skyoverflow.Model.DashboradResponse
 import com.sky.skyoverflow.Model.RequestBody.ResgisterBody
 import com.sky.skyoverflow.Model.StateResponse
 import okhttp3.ResponseBody
@@ -64,6 +65,10 @@ interface ApiService {
         @Field("OtpCode") otp:String
     ): Response<CommonRespons>
 
+    @GET("Authentication/GetDashBoard/{userID}")
+    suspend fun GetDashBoard(
+        @Path("userID") userID: String
+    ): Response<DashboradResponse>
 
 }
 

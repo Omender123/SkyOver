@@ -43,9 +43,9 @@ class Resgister : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
         AppUtils.setStatusBarGradiant(this)
         loadingDialog = LoadingDialog(this)
-
         binding.btnRes.setOnClickListener(this)
         binding.linearRes.setOnClickListener(this)
+
         binding.imgBack.setOnClickListener(this)
 
         resgisterViewModel.fetchStateResponse()

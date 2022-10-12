@@ -16,6 +16,7 @@
     <color name="hint_txt">#7F7F7F</color>
     <color name="select">#FFFFFF</color>
     <color name="un_select">#8ba9c9</color>
+    <color name="txt_38">#383838</color>
 
 
 </resources>
