@@ -19,13 +19,14 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        app:itemRippleColor="@color/purple_700"
         android:background="@color/white"
         android:clipToPadding="false"
         android:fitsSystemWindows="true"
-        app:itemIconTint="@color/purple_700"
-        app:itemTextColor="@color/drawer_icon_color"
+        app:headerLayout="@layout/header_layout"
         app:itemIconPadding="15dp"
-        app:itemIconSize="18sp"
+        app:itemTextColor="@color/txt_38"
+        app:itemIconTint="#80383838"
         app:menu="@menu/drawer_manu"
         android:theme="@style/Theme.SkyOverFlow.NavigationView">
 

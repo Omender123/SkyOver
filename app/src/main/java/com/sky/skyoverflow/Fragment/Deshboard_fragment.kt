@@ -9,8 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.sky.skyoverflow.MainActivity
+import com.sky.skyoverflow.Model.Dashborad
+import com.sky.skyoverflow.Model.DashboradResponse
 import com.sky.skyoverflow.R
 import com.sky.skyoverflow.SharedPerfence.MyPreferences
 import com.sky.skyoverflow.SharedPerfence.PrefConf
@@ -23,11 +27,12 @@ import com.sky.skyoverflow.databinding.FragmentDeshboardBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class Deshboard_fragment : Fragment() {
+class Deshboard_fragment : Fragment(), View.OnClickListener {
     lateinit var loadingDialog: LoadingDialog
     private lateinit var binding: FragmentDeshboardBinding
     private val deshboardViewModel: DeshboardViewModel by viewModels()
     private var userId: String? = null
+    private var dashboradResponse: Dashborad? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +51,7 @@ class Deshboard_fragment : Fragment() {
         deshboardViewModel.fetchDeshBoardResponse(userId!!)
         Log.e("userId", userId!!)
         GetDashboardObservel();
+        binding.imgWallets.setOnClickListener(this)
         return binding.root
     }
 
@@ -56,6 +62,7 @@ class Deshboard_fragment : Fragment() {
                 is NetworkResult.Success -> {
                     hideLoadingDialog()
                     response.data?.let {
+                        dashboradResponse = it.Data[0]
                         binding.txtTotalIn.text =
                             resources.getString(R.string.rupee_sign) + it.Data[0].TotalIncome
                         binding.txtMthIn.text =
@@ -96,6 +103,16 @@ class Deshboard_fragment : Fragment() {
     fun hideLoadingDialog() {
         if (this::loadingDialog.isInitialized && loadingDialog.isShowing()) {
             loadingDialog.dismiss()
+        }
+    }
+
+    override fun onClick(p0: View?) {
+        when (p0?.id) {
+            R.id.img_wallets -> {
+                var  data = bundleOf()
+                data?.putSerializable("Dashborad", dashboradResponse)
+                findNavController().navigate(R.id.action_Dashboard_to_walletFragment,data)
+            }
         }
     }
 }

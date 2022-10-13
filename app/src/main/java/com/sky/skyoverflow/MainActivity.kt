@@ -12,6 +12,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
+import androidx.core.view.GravityCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -24,11 +26,12 @@ import com.sky.skyoverflow.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.inculde_layout.view.*
+import kotlinx.android.synthetic.main.version_layout.view.*
 import java.io.File
 
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener {
+class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View.OnClickListener {
     lateinit var loadingDialog: LoadingDialog
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
@@ -67,6 +70,14 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener {
                 binding.includedLayout.txtWel.visibility = View.VISIBLE
                 binding.includedLayout.txtLebel.visibility = View.GONE
                 binding.includedLayout.bottomNavigation.visibility = View.VISIBLE
+            } else if (destination.id == R.id.walletFragment) {
+                binding.includedLayout.toolbar.navigationIcon =
+                    resources.getDrawable(R.drawable.ic_back_arrow)
+                binding.includedLayout.txtName.visibility = View.GONE
+                binding.includedLayout.txtWel.visibility = View.GONE
+                binding.includedLayout.txtLebel.visibility = View.VISIBLE
+                binding.includedLayout.txtLebel.text = destination.label
+                binding.includedLayout.bottomNavigation.visibility = View.GONE
             } else {
                 binding.includedLayout.toolbar.navigationIcon =
                     resources.getDrawable(R.drawable.ic_back_arrow)
@@ -85,6 +96,11 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener {
 
         val logout: MenuItem = menu.findItem(R.id.nav_logout)
         logout.setOnMenuItemClickListener(this)
+
+        val versions: MenuItem = menu.findItem(R.id.version_layout)
+        versions.setOnMenuItemClickListener(this)
+        var version:CardView = versions.actionView!!.findViewById(R.id.close_menu)
+        version.setOnClickListener(this)
     }
 
 
@@ -120,6 +136,11 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener {
             R.id.nav_logout -> {
                 LogoutAlertBox()
             }
+            R.id.version_layout ->{
+                if (binding.drawer.isDrawerOpen(GravityCompat.START)){
+                    binding.drawer.closeDrawer(GravityCompat.START);
+                }
+            }
         }
         return true
     }
@@ -141,7 +162,7 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener {
                 startActivity(Intent(this, Login::class.java))
                 finish()
             })
-            .setNegativeButton("No",{ dialog, id -> dialog.cancel() })
+            .setNegativeButton("No", { dialog, id -> dialog.cancel() })
 
         // create alert dialog
         val alertDialog: AlertDialog = alertDialogBuilder.create()
@@ -178,5 +199,16 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener {
             }
         }
         return dir!!.delete()
+    }
+
+    override fun onClick(p0: View?) {
+        when(p0?.id){
+
+            R.id.close_menu ->{
+                if (binding.drawer.isDrawerOpen(GravityCompat.START)){
+                    binding.drawer.closeDrawer(GravityCompat.START);
+                }
+            }
+        }
     }
 }

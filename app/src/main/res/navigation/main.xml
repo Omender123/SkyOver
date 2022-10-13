@@ -9,7 +9,17 @@
         android:id="@+id/Dashboard"
         android:name="com.sky.skyoverflow.Fragment.Deshboard_fragment"
         android:label="Dashboard"
-        tools:layout="@layout/fragment_deshboard" />
+        tools:layout="@layout/fragment_deshboard" >
+        <action
+            android:id="@+id/action_Dashboard_to_walletFragment"
+            app:destination="@id/walletFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/walletFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/Members"
         android:name="com.sky.skyoverflow.Fragment.MemberFragment"
@@ -25,4 +35,9 @@
         android:name="com.sky.skyoverflow.Fragment.PortfolioFragment"
         android:label="Portfolio"
         tools:layout="@layout/fragment_portfolio" />
+    <fragment
+        android:id="@+id/walletFragment"
+        android:name="com.sky.skyoverflow.Fragment.WalletFragment"
+        android:label="Wallets"
+        tools:layout="@layout/fragment_wallet" />
 </navigation>
