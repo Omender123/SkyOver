@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -70,7 +71,7 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
                 binding.includedLayout.txtWel.visibility = View.VISIBLE
                 binding.includedLayout.txtLebel.visibility = View.GONE
                 binding.includedLayout.bottomNavigation.visibility = View.VISIBLE
-            } else if (destination.id == R.id.walletFragment) {
+            } else if (destination.id == R.id.walletFragment  || destination.id == R.id.profileFragment || destination.id == R.id.accountSettingFragment) {
                 binding.includedLayout.toolbar.navigationIcon =
                     resources.getDrawable(R.drawable.ic_back_arrow)
                 binding.includedLayout.txtName.visibility = View.GONE
@@ -96,11 +97,17 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
 
         val logout: MenuItem = menu.findItem(R.id.nav_logout)
         logout.setOnMenuItemClickListener(this)
-
         val versions: MenuItem = menu.findItem(R.id.version_layout)
         versions.setOnMenuItemClickListener(this)
-        var version:CardView = versions.actionView!!.findViewById(R.id.close_menu)
+        var version: CardView = versions.actionView!!.findViewById(R.id.close_menu)
         version.setOnClickListener(this)
+
+        var navHeader: View = binding.navigationView.getHeaderView(0)
+        navHeader.findViewById<TextView>(R.id.txt_name).text =
+            MyPreferences.getInstance(this).getString(PrefConf.USER_NAME, "GUEST")
+        navHeader.findViewById<TextView>(R.id.txt_mobile).text =
+            MyPreferences.getInstance(this).getString(PrefConf.USER_MOBILE, "9999999999")
+
     }
 
 
@@ -136,8 +143,8 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
             R.id.nav_logout -> {
                 LogoutAlertBox()
             }
-            R.id.version_layout ->{
-                if (binding.drawer.isDrawerOpen(GravityCompat.START)){
+            R.id.version_layout -> {
+                if (binding.drawer.isDrawerOpen(GravityCompat.START)) {
                     binding.drawer.closeDrawer(GravityCompat.START);
                 }
             }
@@ -202,10 +209,10 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
     }
 
     override fun onClick(p0: View?) {
-        when(p0?.id){
+        when (p0?.id) {
 
-            R.id.close_menu ->{
-                if (binding.drawer.isDrawerOpen(GravityCompat.START)){
+            R.id.close_menu -> {
+                if (binding.drawer.isDrawerOpen(GravityCompat.START)) {
                     binding.drawer.closeDrawer(GravityCompat.START);
                 }
             }

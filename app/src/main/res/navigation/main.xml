@@ -40,4 +40,14 @@
         android:name="com.sky.skyoverflow.Fragment.WalletFragment"
         android:label="Wallets"
         tools:layout="@layout/fragment_wallet" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.sky.skyoverflow.Fragment.SlideMenu.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/accountSettingFragment"
+        android:name="com.sky.skyoverflow.Fragment.SlideMenu.AccountSettingFragment"
+        android:label="Account Setting"
+        tools:layout="@layout/fragment_account_setting" />
 </navigation>

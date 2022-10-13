@@ -5,11 +5,11 @@
         android:id="@+id/group1"
         android:checkableBehavior="single">
         <item
-            android:id="@+id/profile"
+            android:id="@id/profileFragment"
             android:icon="@drawable/ic_user_menu"
             android:title="Profile" />
         <item
-            android:id="@+id/acc_setting"
+            android:id="@id/accountSettingFragment"
             android:icon="@drawable/ic_account_setting"
             android:title="Account Settings" />
         <item
