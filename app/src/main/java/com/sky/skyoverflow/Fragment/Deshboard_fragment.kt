@@ -18,6 +18,7 @@ import com.sky.skyoverflow.Model.DashboradResponse
 import com.sky.skyoverflow.R
 import com.sky.skyoverflow.SharedPerfence.MyPreferences
 import com.sky.skyoverflow.SharedPerfence.PrefConf
+import com.sky.skyoverflow.Utils.AppUtils
 import com.sky.skyoverflow.Utils.LoadingDialog
 import com.sky.skyoverflow.Utils.NetworkResult
 import com.sky.skyoverflow.ViewModel.DeshboardViewModel
@@ -44,6 +45,7 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentDeshboardBinding.inflate(inflater, container, false)
+        AppUtils.checkAndRequestPermissions(requireActivity())
         loadingDialog = LoadingDialog(requireContext())
         userId =
             MyPreferences.getInstance(requireContext()).getString(PrefConf.USER_SPONSER_ID, null)
@@ -52,6 +54,8 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
         Log.e("userId", userId!!)
         GetDashboardObservel();
         binding.imgWallets.setOnClickListener(this)
+        binding.imgAdd.setOnClickListener(this)
+
         return binding.root
     }
 
@@ -112,6 +116,10 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
                 var  data = bundleOf()
                 data?.putSerializable("Dashborad", dashboradResponse)
                 findNavController().navigate(R.id.action_Dashboard_to_walletFragment,data)
+            }
+
+            R.id.img_add -> {
+                findNavController().navigate(R.id.action_Dashboard_to_add_FundFragment)
             }
         }
     }

@@ -8,5 +8,17 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="rupee_sign">₹ </string>
 
+    <string-array name="wallets_list">
+        <item>Select Wallet</item>
+        <item>Main Wallet</item>
+        <item>Topup Wallet</item>
+        <item>Card Wallet</item>
+    </string-array>
+
+    <string-array name="pay_method_list">
+        <item>Select Payment Method</item>
+        <item>PhonePe (8057020034)</item>
+        <item>Google Pay (9997751831)</item>
+    </string-array>
 
 </resources>
