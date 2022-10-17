@@ -55,6 +55,7 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
         GetDashboardObservel();
         binding.imgWallets.setOnClickListener(this)
         binding.imgAdd.setOnClickListener(this)
+        binding.imgTransfer.setOnClickListener(this)
 
         return binding.root
     }
@@ -67,6 +68,7 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
                     hideLoadingDialog()
                     response.data?.let {
                         dashboradResponse = it.Data[0]
+                        MyPreferences.getInstance(requireContext()).putString(PrefConf.USER_MAINWALLETBALANCE,it.Data[0].MainwalletBallance)
                         binding.txtTotalIn.text =
                             resources.getString(R.string.rupee_sign) + it.Data[0].TotalIncome
                         binding.txtMthIn.text =
@@ -120,6 +122,10 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
 
             R.id.img_add -> {
                 findNavController().navigate(R.id.action_Dashboard_to_add_FundFragment)
+            }
+
+            R.id.img_transfer -> {
+                findNavController().navigate(R.id.action_Dashboard_to_transfer_Fund_Fragment)
             }
         }
     }
