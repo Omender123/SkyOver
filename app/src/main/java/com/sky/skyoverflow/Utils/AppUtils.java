@@ -22,7 +22,7 @@ import java.util.List;
 public class AppUtils {
     public static final int PERMISSION_REQUEST_CODE = 200;
 
-    public static boolean checkAndRequestPermissions(Activity context) {
+        public static boolean checkAndRequestPermissions(Activity context) {
         if (context != null) {
 
             int storagePermission = ContextCompat.checkSelfPermission(context,

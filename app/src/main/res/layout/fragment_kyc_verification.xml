@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_700"
+    tools:context=".Fragment.SlideMenu.KycVerificationFragment">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btn_continue"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:padding="15dp"
+                android:text="Select any one Government ID Proof"
+                android:textColor="@color/txt_38" />
+
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_checkbox"
+                    android:buttonTint="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:paddingEnd="30dp"
+                    android:text="Aadhaar id"
+                    android:textColor="@color/selector_color"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_checkbox"
+                    android:buttonTint="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:paddingEnd="30dp"
+                    android:text="Voter ID"
+                    android:textColor="@color/selector_color"
+                    android:textSize="16sp" />
+            </RadioGroup>
+
+
+            <EditText
+                android:id="@+id/ed_doc_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/corner8"
+                android:drawableLeft="@drawable/ic_doc_no"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/hint_txt"
+                android:fontFamily="@font/poppins"
+                android:hint="Document Number"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:textColorHint="@color/hint_txt"
+                android:textSize="14dp" />
+
+
+            <EditText
+                android:id="@+id/ed_doc_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/corner8"
+                android:drawableLeft="@drawable/ic_username"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/hint_txt"
+                android:fontFamily="@font/poppins"
+                android:hint="Name as per Document"
+                android:inputType="text"
+                android:padding="15dp"
+                android:textColor="#000000"
+                android:textColorHint="@color/hint_txt"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/ed_doc_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/corner8"
+                android:drawableLeft="@drawable/ic_calender"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/hint_txt"
+                android:fontFamily="@font/poppins"
+                android:hint="Date of Birth"
+                android:padding="15dp"
+                android:textColor="#000000"
+                android:textColorHint="@color/hint_txt"
+                android:textSize="14dp" />
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="1dp">
+
+                <RelativeLayout
+                    android:id="@+id/lyt_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="16sp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toStartOf="@+id/txt_main_view"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Photo"
+                        android:textColor="@color/txt_38"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/txt_chan_pass"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="11dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="18dp"
+                        android:layout_toStartOf="@+id/txt_main_view"
+                        android:fontFamily="@font/poppins_medium"
+                        android:singleLine="true"
+                        android:text="Take Photo or Upload"
+                        android:textColor="#8A383838"
+                        android:textSize="12dp" />
+
+                    <ImageView
+                        android:id="@+id/txt_main_view"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="25dp"
+                        android:src="@drawable/ic_view_all" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="1dp">
+
+                <RelativeLayout
+                    android:id="@+id/lyt_doc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txt2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="16sp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_toStartOf="@+id/txt_main_view2"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Document"
+                        android:textColor="@color/txt_38"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/txt1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt2"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="11dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="18dp"
+                        android:layout_toStartOf="@+id/txt_main_view2"
+                        android:fontFamily="@font/poppins_medium"
+                        android:singleLine="true"
+                        android:text="Take Photo or Upload"
+                        android:textColor="#8A383838"
+                        android:textSize="12dp" />
+
+                    <ImageView
+                        android:id="@+id/txt_main_view2"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="25dp"
+                        android:src="@drawable/ic_view_all" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <TextView
+        android:id="@+id/btn_continue"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/corner8"
+        android:backgroundTint="@color/btn_color"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:text="Continue"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="15dp" />
+</RelativeLayout>
