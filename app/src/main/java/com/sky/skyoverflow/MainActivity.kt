@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
                 binding.includedLayout.bottomNavigation.visibility = View.VISIBLE
             } else if (destination.id == R.id.walletFragment || destination.id == R.id.profileFragment || destination.id == R.id.accountSettingFragment || destination.id == R.id.transfer_Fund_Fragment
                 || destination.id == R.id.kycVerificationFragment || destination.id == R.id.uploadPhotoFragment || destination.id == R.id.uploadDocFragment || destination.id == R.id.changePasswordFragment
-                || destination.id == R.id.addBankFragment
+                || destination.id == R.id.addBankFragment || destination.id == R.id.editProfileFragment || destination.id == R.id.supportFragment
             ) {
                 binding.includedLayout.toolbar.navigationIcon =
                     resources.getDrawable(R.drawable.ic_back_arrow)

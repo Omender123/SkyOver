@@ -37,7 +37,7 @@
                 android:id="@+id/img_wallets"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="-35dp"
+
                 android:layout_weight="1"
                 android:src="@drawable/ic_walllets" />
 
@@ -60,7 +60,6 @@
                 android:id="@+id/img_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="-35dp"
                 android:layout_weight="1"
                 android:src="@drawable/ic_history" />
 
@@ -92,7 +91,6 @@
                 android:id="@+id/layout_mobile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="-35dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -167,7 +165,6 @@
                 android:id="@+id/layout_dth"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="-35dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">

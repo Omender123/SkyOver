@@ -22,13 +22,15 @@
             android:icon="@drawable/ic_user_menu"
             android:title="Add New Member" />
 
+<!--
         <item
             android:id="@+id/refund"
             android:icon="@drawable/ic_support_icon"
             android:title="Refund" />
+-->
 
         <item
-            android:id="@+id/support"
+            android:id="@id/supportFragment"
             android:icon="@drawable/ic_support_icon"
             android:title="Support" />
 

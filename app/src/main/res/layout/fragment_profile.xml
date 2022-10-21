@@ -50,13 +50,12 @@
                 android:text="janeco"
                 android:textColor="#383838"
                 android:textSize="15dp" />
-            
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="12dp"
-                android:background="#DDDDDD"/>
-
+                android:background="#DDDDDD" />
 
 
             <TextView
@@ -82,8 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="12dp"
-                android:background="#DDDDDD"/>
-
+                android:background="#DDDDDD" />
 
 
             <TextView
@@ -109,8 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="12dp"
-                android:background="#DDDDDD"/>
-
+                android:background="#DDDDDD" />
 
 
             <TextView
@@ -136,8 +133,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="12dp"
-                android:background="#DDDDDD"/>
-
+                android:background="#DDDDDD" />
 
 
             <TextView
@@ -154,9 +150,9 @@
                 android:id="@+id/txt_share"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_share"
                 android:fontFamily="@font/poppins_medium"
                 android:text="S000001"
-                android:drawableRight="@drawable/ic_share"
                 android:textColor="#383838"
                 android:textSize="15dp" />
 
@@ -164,7 +160,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="12dp"
-                android:background="#DDDDDD"/>
+                android:background="#DDDDDD" />
 
         </LinearLayout>
 
