@@ -37,6 +37,24 @@
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/transfer_Fund_Fragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_Dashboard_to_mobileRechargeFragment"
+            app:destination="@id/mobileRechargeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/mobileRechargeFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_Dashboard_to_DTHRechargeFragment"
+            app:destination="@id/DTHRechargeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/DTHRechargeFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/Members"
@@ -170,4 +188,14 @@
         android:name="com.sky.skyoverflow.Fragment.SlideMenu.SupportFragment"
         android:label="Support"
         tools:layout="@layout/fragment_support" />
+    <fragment
+        android:id="@+id/mobileRechargeFragment"
+        android:name="com.sky.skyoverflow.Fragment.Recharge.MobileRechargeFragment"
+        android:label="Mobile Recharge"
+        tools:layout="@layout/fragment_mobile_recharge" />
+    <fragment
+        android:id="@+id/DTHRechargeFragment"
+        android:name="com.sky.skyoverflow.Fragment.Recharge.DTHRechargeFragment"
+        android:label="DTH Recharge"
+        tools:layout="@layout/fragment_dth_recharge" />
 </navigation>

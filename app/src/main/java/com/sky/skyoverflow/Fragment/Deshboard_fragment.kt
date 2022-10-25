@@ -56,6 +56,8 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
         binding.imgWallets.setOnClickListener(this)
         binding.imgAdd.setOnClickListener(this)
         binding.imgTransfer.setOnClickListener(this)
+        binding.imgMobileChar.setOnClickListener(this)
+        binding.imgDthChar.setOnClickListener(this)
 
         return binding.root
     }
@@ -127,6 +129,16 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
             R.id.img_transfer -> {
                 findNavController().navigate(R.id.action_Dashboard_to_transfer_Fund_Fragment)
             }
+
+            R.id.img_mobile_char -> {
+                findNavController().navigate(R.id.action_Dashboard_to_mobileRechargeFragment)
+            }
+
+            R.id.img_dth_char -> {
+                findNavController().navigate(R.id.action_Dashboard_to_DTHRechargeFragment)
+            }
+
+
         }
     }
 }

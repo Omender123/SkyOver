@@ -77,6 +77,46 @@
             android:textColor="@color/btn_color"
             android:textSize="16sp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <ImageView
+                android:id="@+id/img_mobile_char"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_mobile_icon" />
+
+            <ImageView
+                android:id="@+id/img_elect_char"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_electric_icon" />
+
+            <ImageView
+                android:id="@+id/img_water_char"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_water_char" />
+
+            <ImageView
+                android:id="@+id/img_dth_char"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_dth_char" />
+
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,7 +128,6 @@
             android:weightSum="4">
 
             <LinearLayout
-                android:id="@+id/layout_mobile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -96,95 +135,34 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_mobile_icon" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center"
-                    android:text="Mobile"
-                    android:textColor="#D902448A"
-                    android:textSize="16dp" />
-
-
+                    android:id="@+id/img_gas_char"
+                    android:layout_width="60dp"
+                    android:scaleType="fitXY"
+                    android:layout_height="80dp"
+                    android:src="@mipmap/ic_gas_char" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/layout_electric"
+            <ImageView
+                android:id="@+id/img_fast_char"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:src="@drawable/ic_fast_tag_char" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_electric_icon" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center"
-                    android:text="Electricity"
-                    android:textColor="#D902448A"
-                    android:textSize="16dp" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_water"
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:src="@drawable/ic_water_char"
+                android:visibility="invisible" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_water_icon" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center"
-                    android:text="Water"
-                    android:textColor="#D902448A"
-                    android:textSize="16dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layout_dth"
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:src="@drawable/ic_dth_char"
+                android:visibility="invisible" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_dth" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center"
-                    android:text="DTH"
-                    android:textColor="#D902448A"
-                    android:textSize="16dp" />
-
-
-            </LinearLayout>
 
         </LinearLayout>
 
