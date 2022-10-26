@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.sky.skyoverflow.R
 
-class PortfolioFragment : Fragment() {
+class RepurchaseFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +18,6 @@ class PortfolioFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_portfolio, container, false)
+        return inflater.inflate(R.layout.fragment_repurchase, container, false)
     }
 }

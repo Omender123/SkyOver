@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_700"
+    tools:context=".Fragment.Dashboard.MembeActivitionFragment">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/txt_send"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/ic_desh_back">
+
+
+                <TextView
+                    android:id="@+id/txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="16sp"
+                    android:layout_marginEnd="15dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Main Wallet"
+                    android:textColor="@color/white"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/txt_main_bal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="18dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="25dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:paddingTop="25dp"
+                android:paddingBottom="15dp"
+                android:text="Select Package"
+                android:textColor="@color/txt_38" />
+
+            <RadioGroup
+                android:id="@+id/rg_package"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <RadioButton
+                    android:id="@+id/rd_pack330"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_checkbox"
+                    android:buttonTint="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:paddingEnd="30dp"
+                    android:text="₹ 330"
+                    android:textColor="@color/selector_color"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/rd_pack1377"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_checkbox"
+                    android:buttonTint="@android:color/transparent"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center"
+                    android:paddingEnd="30dp"
+                    android:text="₹ 1377"
+                    android:textColor="@color/selector_color"
+                    android:textSize="16sp" />
+            </RadioGroup>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/corner8"
+                android:paddingStart="15dp"
+                android:paddingTop="15dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="10dp">
+
+                <EditText
+                    android:id="@+id/ed_checkUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="05dp"
+                    android:layout_toStartOf="@+id/btn_check"
+                    android:background="@android:color/transparent"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/poppins"
+                    android:hint="Enter Username"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textColor="@color/txt_38"
+                    android:textColorHint="@color/hint_txt"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/btn_check"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="end"
+                    android:text="Verify"
+                    android:textColor="@color/btn_color"
+                    android:textSize="15dp" />
+
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/txt_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/corner8"
+                android:drawableRight="@drawable/ic_done_iocn"
+                android:drawablePadding="15dp"
+                android:fontFamily="@font/poppins"
+                android:padding="15dp"
+                android:text="Janeco Cooper"
+                android:textColor="@color/txt_38"
+                android:textSize="15dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="05dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Price"
+                    android:textColor="@color/txt_38"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txt_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="end"
+                    android:text="₹ 330.00"
+                    android:textColor="@color/btn_color"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="05dp"
+                    android:layout_weight="1.2"
+                    android:fontFamily="@font/poppins"
+                    android:text="Kit Description "
+                    android:textColor="@color/hint_txt"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/txt_des"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="0.8"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="end"
+                    android:text="Activation Package of 330"
+                    android:textColor="@color/hint_txt"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="05dp"
+                    android:layout_weight="1.2"
+                    android:fontFamily="@font/poppins"
+                    android:text="Kit Code "
+                    android:textColor="@color/hint_txt"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/txt_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="0.8"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="end"
+                    android:text="Activation Package of 330"
+                    android:textColor="@color/hint_txt"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <TextView
+        android:id="@+id/txt_activate"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/corner8"
+        android:backgroundTint="@color/btn_color"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:text="Activate Member"
+        android:textColor="@color/white" />
+
+
+</RelativeLayout>

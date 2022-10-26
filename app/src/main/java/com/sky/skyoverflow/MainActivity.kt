@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -65,29 +66,50 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
 
         navController?.addOnDestinationChangedListener { controller, destination, arguments ->
             if (destination.id == R.id.Dashboard) {
+                binding.includedLayout.relative.visibility = View.VISIBLE
                 binding.includedLayout.toolbar.navigationIcon =
                     resources.getDrawable(R.drawable.ic_menu_icon)
                 binding.includedLayout.txtName.visibility = View.VISIBLE
                 binding.includedLayout.txtWel.visibility = View.VISIBLE
                 binding.includedLayout.txtLebel.visibility = View.GONE
+                binding.includedLayout.imgCart.visibility = View.GONE
                 binding.includedLayout.bottomNavigation.visibility = View.VISIBLE
             } else if (destination.id == R.id.walletFragment || destination.id == R.id.profileFragment || destination.id == R.id.accountSettingFragment || destination.id == R.id.transfer_Fund_Fragment
                 || destination.id == R.id.kycVerificationFragment || destination.id == R.id.uploadPhotoFragment || destination.id == R.id.uploadDocFragment || destination.id == R.id.changePasswordFragment
                 || destination.id == R.id.addBankFragment || destination.id == R.id.editProfileFragment || destination.id == R.id.supportFragment || destination.id == R.id.mobileRechargeFragment
-                || destination.id == R.id.DTHRechargeFragment
+                || destination.id == R.id.DTHRechargeFragment || destination.id == R.id.membeActivitionFragment
             ) {
+                binding.includedLayout.relative.visibility = View.VISIBLE
+                binding.includedLayout.toolbar.navigationIcon =
+                    resources.getDrawable(R.drawable.ic_back_arrow)
+                binding.includedLayout.txtName.visibility = View.GONE
+                binding.includedLayout.imgCart.visibility = View.GONE
+                binding.includedLayout.txtWel.visibility = View.GONE
+                binding.includedLayout.txtLebel.visibility = View.VISIBLE
+                binding.includedLayout.txtLebel.text = destination.label
+                binding.includedLayout.bottomNavigation.visibility = View.GONE
+            } else if (destination.id == R.id.memberSuccessFragment) {
+                binding.includedLayout.relative.visibility = View.GONE
+                binding.includedLayout.imgCart.visibility = View.GONE
+                binding.includedLayout.bottomNavigation.visibility = View.GONE
+            } else if (destination.id == R.id.RepurchaseFragment) {
+                binding.includedLayout.relative.visibility = View.VISIBLE
                 binding.includedLayout.toolbar.navigationIcon =
                     resources.getDrawable(R.drawable.ic_back_arrow)
                 binding.includedLayout.txtName.visibility = View.GONE
                 binding.includedLayout.txtWel.visibility = View.GONE
                 binding.includedLayout.txtLebel.visibility = View.VISIBLE
                 binding.includedLayout.txtLebel.text = destination.label
+                binding.includedLayout.imgCart.visibility = View.VISIBLE
                 binding.includedLayout.bottomNavigation.visibility = View.GONE
+
             } else {
+                binding.includedLayout.relative.visibility = View.VISIBLE
                 binding.includedLayout.toolbar.navigationIcon =
                     resources.getDrawable(R.drawable.ic_back_arrow)
                 binding.includedLayout.txtName.visibility = View.GONE
                 binding.includedLayout.txtWel.visibility = View.GONE
+                binding.includedLayout.imgCart.visibility = View.GONE
                 binding.includedLayout.txtLebel.visibility = View.VISIBLE
                 binding.includedLayout.txtLebel.text = destination.label
                 binding.includedLayout.bottomNavigation.visibility = View.VISIBLE
@@ -123,6 +145,7 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
     }
 
     override fun onBackPressed() {
+
         if (navController.currentDestination?.label == "Dashboard") {
             finish()
         } else {

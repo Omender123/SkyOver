@@ -58,6 +58,7 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
         binding.imgTransfer.setOnClickListener(this)
         binding.imgMobileChar.setOnClickListener(this)
         binding.imgDthChar.setOnClickListener(this)
+        binding.txtBuy.setOnClickListener(this)
 
         return binding.root
     }
@@ -70,7 +71,10 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
                     hideLoadingDialog()
                     response.data?.let {
                         dashboradResponse = it.Data[0]
-                        MyPreferences.getInstance(requireContext()).putString(PrefConf.USER_MAINWALLETBALANCE,it.Data[0].MainwalletBallance)
+                        MyPreferences.getInstance(requireContext()).putString(
+                            PrefConf.USER_MAINWALLETBALANCE,
+                            it.Data[0].MainwalletBallance
+                        )
                         binding.txtTotalIn.text =
                             resources.getString(R.string.rupee_sign) + it.Data[0].TotalIncome
                         binding.txtMthIn.text =
@@ -117,9 +121,9 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.img_wallets -> {
-                var  data = bundleOf()
+                var data = bundleOf()
                 data?.putSerializable("Dashborad", dashboradResponse)
-                findNavController().navigate(R.id.action_Dashboard_to_walletFragment,data)
+                findNavController().navigate(R.id.action_Dashboard_to_walletFragment, data)
             }
 
             R.id.img_add -> {
@@ -137,7 +141,9 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
             R.id.img_dth_char -> {
                 findNavController().navigate(R.id.action_Dashboard_to_DTHRechargeFragment)
             }
-
+            R.id.txt_buy -> {
+                findNavController().navigate(R.id.action_Dashboard_to_membeActivitionFragment)
+            }
 
         }
     }

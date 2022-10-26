@@ -21,34 +21,35 @@
             android:id="@+id/toolbar"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginStart="15dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentBottom="true" />
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp" />
 
         <TextView
             android:id="@+id/txt_lebel"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
+            android:layout_marginEnd="15dp"
+            android:layout_toStartOf="@+id/linear"
             android:layout_toEndOf="@+id/toolbar"
-            android:gravity="center|start"
-            android:visibility="gone"
-            android:textColor="#383838"
             android:fontFamily="@font/poppins_medium"
-            android:textSize="16sp" />
+            android:gravity="center|start"
+            android:textColor="#383838"
+            android:textSize="16sp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/txt_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
             android:layout_marginTop="05dp"
             android:layout_marginEnd="15dp"
+            android:layout_toStartOf="@+id/linear"
             android:layout_toEndOf="@+id/toolbar"
             android:fontFamily="@font/poppins_medium"
             android:text="Jane Cooper"
@@ -59,15 +60,43 @@
             android:id="@+id/txt_wel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
             android:layout_below="@id/txt_name"
-            android:layout_alignParentEnd="true"
             android:layout_marginTop="-03dp"
+            android:layout_marginEnd="15dp"
+            android:layout_toStartOf="@+id/linear"
             android:layout_toEndOf="@+id/toolbar"
             android:fontFamily="@font/poppins"
             android:text="Welcome"
             android:textColor="#D9383838"
             android:textSize="12sp" />
+
+        <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_cart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_cart_icon_tool"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/img_orderHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:src="@drawable/ic_order_history_icon"
+                android:visibility="gone" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 
@@ -100,6 +129,7 @@
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         app:itemIconTint="@color/nav"
+        app:itemTextAppearance="@style/TextStyleBNV"
         app:itemTextColor="@color/nav"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"

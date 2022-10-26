@@ -8,10 +8,10 @@
         android:menuCategory="secondary"
         android:title="DASHBOARD" />
     <item
-        android:id="@id/Portfolio"
-        android:icon="@drawable/ic_portfolio"
+        android:id="@id/RepurchaseFragment"
+        android:icon="@drawable/ic_cart_icon"
         android:menuCategory="secondary"
-        android:title="PORTFOLIO" />
+        android:title="REPURCHASE" />
 
     <item
         android:id="@id/Members"

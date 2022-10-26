@@ -54,7 +54,17 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/DTHRechargeFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_Dashboard_to_membeActivitionFragment"
+            app:destination="@id/membeActivitionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/membeActivitionFragment"
+            app:popUpToInclusive="true" />
+
     </fragment>
     <fragment
         android:id="@+id/Members"
@@ -67,10 +77,10 @@
         android:label="Notification"
         tools:layout="@layout/fragment_notification" />
     <fragment
-        android:id="@+id/Portfolio"
-        android:name="com.sky.skyoverflow.Fragment.PortfolioFragment"
-        android:label="Portfolio"
-        tools:layout="@layout/fragment_portfolio" />
+        android:id="@+id/RepurchaseFragment"
+        android:name="com.sky.skyoverflow.Fragment.RepurchaseFragment"
+        android:label="New Order"
+        tools:layout="@layout/fragment_repurchase" />
     <fragment
         android:id="@+id/walletFragment"
         android:name="com.sky.skyoverflow.Fragment.Dashboard.WalletFragment"
@@ -198,4 +208,24 @@
         android:name="com.sky.skyoverflow.Fragment.Recharge.DTHRechargeFragment"
         android:label="DTH Recharge"
         tools:layout="@layout/fragment_dth_recharge" />
+    <fragment
+        android:id="@+id/membeActivitionFragment"
+        android:name="com.sky.skyoverflow.Fragment.Dashboard.MembeActivitionFragment"
+        android:label="Member Activation"
+        tools:layout="@layout/fragment_membe_activition">
+        <action
+            android:id="@+id/action_membeActivitionFragment_to_memberSuccessFragment"
+            app:destination="@id/memberSuccessFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/memberSuccessFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/memberSuccessFragment"
+        android:name="com.sky.skyoverflow.Fragment.Dashboard.MemberSuccessFragment"
+        android:label="Member Activation"
+        tools:layout="@layout/fragment_member_success" />
 </navigation>
