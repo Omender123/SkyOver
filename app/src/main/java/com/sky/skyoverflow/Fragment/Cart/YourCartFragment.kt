@@ -1,23 +1,26 @@
-package com.sky.skyoverflow.Fragment
+package com.sky.skyoverflow.Fragment.Cart
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.sky.skyoverflow.Adapter.CartAdapter
 import com.sky.skyoverflow.Adapter.ProductListAdapter
 import com.sky.skyoverflow.R
-import com.sky.skyoverflow.databinding.FragmentRepurchaseBinding
+import com.sky.skyoverflow.databinding.FragmentYourCartBinding
 
-class RepurchaseFragment : Fragment() {
-    private lateinit var binding: FragmentRepurchaseBinding
 
+class YourCartFragment : Fragment(), View.OnClickListener {
+    private lateinit var binding: FragmentYourCartBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(
@@ -25,7 +28,8 @@ class RepurchaseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentRepurchaseBinding.inflate(inflater, container, false)
+        binding = FragmentYourCartBinding.inflate(inflater, container, false)
+        binding.txtCheckout.setOnClickListener(this)
         setData()
         return binding.root
     }
@@ -42,12 +46,20 @@ class RepurchaseFragment : Fragment() {
 
 
         val mLayoutManager1: RecyclerView.LayoutManager =
-            GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
+            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         binding.recyclerView.setLayoutManager(mLayoutManager1)
         binding.recyclerView.setItemAnimator(DefaultItemAnimator())
         var adapter =
-            ProductListAdapter(data, requireContext());
+            CartAdapter(data, requireContext());
         binding.recyclerView.setAdapter(adapter)
     }
 
+    override fun onClick(p0: View?) {
+        when (p0?.id) {
+
+            R.id.txt_checkout -> {
+                findNavController().navigate(R.id.action_yourCartFragment_to_shippingAddressFragment)
+            }
+        }
+    }
 }

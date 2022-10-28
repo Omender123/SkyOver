@@ -50,15 +50,12 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
         binding.includedLayout.txtName.text =
             MyPreferences.getInstance(this).getString(PrefConf.USER_NAME, "GUEST")
 
-        appBarConfiguration = AppBarConfiguration.Builder(navController.graph)
-            .setDrawerLayout(binding.drawer)
-            .build()
+        appBarConfiguration =
+            AppBarConfiguration.Builder(navController.graph).setDrawerLayout(binding.drawer).build()
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navigationView, navController);
         NavigationUI.setupWithNavController(
-            binding.includedLayout.toolbar,
-            navController,
-            binding.drawer
+            binding.includedLayout.toolbar, navController, binding.drawer
         );
         binding.includedLayout.toolbar.navigationIcon =
             resources.getDrawable(R.drawable.ic_menu_icon)
@@ -72,12 +69,15 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
                 binding.includedLayout.txtName.visibility = View.VISIBLE
                 binding.includedLayout.txtWel.visibility = View.VISIBLE
                 binding.includedLayout.txtLebel.visibility = View.GONE
+                binding.includedLayout.imgOrderHistory.visibility = View.GONE
                 binding.includedLayout.imgCart.visibility = View.GONE
                 binding.includedLayout.bottomNavigation.visibility = View.VISIBLE
-            } else if (destination.id == R.id.walletFragment || destination.id == R.id.profileFragment || destination.id == R.id.accountSettingFragment || destination.id == R.id.transfer_Fund_Fragment
-                || destination.id == R.id.kycVerificationFragment || destination.id == R.id.uploadPhotoFragment || destination.id == R.id.uploadDocFragment || destination.id == R.id.changePasswordFragment
-                || destination.id == R.id.addBankFragment || destination.id == R.id.editProfileFragment || destination.id == R.id.supportFragment || destination.id == R.id.mobileRechargeFragment
-                || destination.id == R.id.DTHRechargeFragment || destination.id == R.id.membeActivitionFragment
+            } else if (destination.id == R.id.walletFragment || destination.id == R.id.profileFragment || destination.id == R.id.accountSettingFragment
+                || destination.id == R.id.transfer_Fund_Fragment || destination.id == R.id.kycVerificationFragment || destination.id == R.id.uploadPhotoFragment
+                || destination.id == R.id.uploadDocFragment || destination.id == R.id.changePasswordFragment || destination.id == R.id.addBankFragment
+                || destination.id == R.id.editProfileFragment || destination.id == R.id.supportFragment || destination.id == R.id.mobileRechargeFragment
+                || destination.id == R.id.DTHRechargeFragment || destination.id == R.id.membeActivitionFragment || destination.id == R.id.shippingAddressFragment
+                || destination.id == R.id.deliveryAddressFragment|| destination.id == R.id.paymentModeFragment
             ) {
                 binding.includedLayout.relative.visibility = View.VISIBLE
                 binding.includedLayout.toolbar.navigationIcon =
@@ -87,10 +87,12 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
                 binding.includedLayout.txtWel.visibility = View.GONE
                 binding.includedLayout.txtLebel.visibility = View.VISIBLE
                 binding.includedLayout.txtLebel.text = destination.label
+                binding.includedLayout.imgOrderHistory.visibility = View.GONE
                 binding.includedLayout.bottomNavigation.visibility = View.GONE
             } else if (destination.id == R.id.memberSuccessFragment) {
                 binding.includedLayout.relative.visibility = View.GONE
                 binding.includedLayout.imgCart.visibility = View.GONE
+                binding.includedLayout.imgOrderHistory.visibility = View.GONE
                 binding.includedLayout.bottomNavigation.visibility = View.GONE
             } else if (destination.id == R.id.RepurchaseFragment) {
                 binding.includedLayout.relative.visibility = View.VISIBLE
@@ -101,6 +103,19 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
                 binding.includedLayout.txtLebel.visibility = View.VISIBLE
                 binding.includedLayout.txtLebel.text = destination.label
                 binding.includedLayout.imgCart.visibility = View.VISIBLE
+                binding.includedLayout.imgOrderHistory.visibility = View.GONE
+                binding.includedLayout.bottomNavigation.visibility = View.GONE
+
+            } else if (destination.id == R.id.yourCartFragment) {
+                binding.includedLayout.relative.visibility = View.VISIBLE
+                binding.includedLayout.toolbar.navigationIcon =
+                    resources.getDrawable(R.drawable.ic_back_arrow)
+                binding.includedLayout.txtName.visibility = View.GONE
+                binding.includedLayout.txtWel.visibility = View.GONE
+                binding.includedLayout.txtLebel.visibility = View.VISIBLE
+                binding.includedLayout.txtLebel.text = destination.label
+                binding.includedLayout.imgCart.visibility = View.GONE
+                binding.includedLayout.imgOrderHistory.visibility = View.VISIBLE
                 binding.includedLayout.bottomNavigation.visibility = View.GONE
 
             } else {
@@ -112,10 +127,12 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
                 binding.includedLayout.imgCart.visibility = View.GONE
                 binding.includedLayout.txtLebel.visibility = View.VISIBLE
                 binding.includedLayout.txtLebel.text = destination.label
+                binding.includedLayout.imgOrderHistory.visibility = View.GONE
                 binding.includedLayout.bottomNavigation.visibility = View.VISIBLE
             }
         }
         moreNavigationOptions()
+        binding.includedLayout.imgCart.setOnClickListener(this)
     }
 
     private fun moreNavigationOptions() {
@@ -139,8 +156,7 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
 
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(
-            navController,
-            appBarConfiguration
+            navController, appBarConfiguration
         )//navController.navigateUp() || super.onSupportNavigateUp()
     }
 
@@ -186,17 +202,14 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
         alertDialogBuilder.setTitle(resources.getString(R.string.app_name))
 
         alertDialogBuilder.setIcon(R.mipmap.ic_launcher_round)
-        alertDialogBuilder
-            .setMessage("Are you sure to Logout !!!!!")
-            .setCancelable(false)
+        alertDialogBuilder.setMessage("Are you sure to Logout !!!!!").setCancelable(false)
             .setPositiveButton("Yes", DialogInterface.OnClickListener { dialog, id ->
                 MyPreferences.getInstance(this@MainActivity).clearPreferences()
                 clearApplicationData()
                 Toast.makeText(this@MainActivity, "Logout Successfully", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, Login::class.java))
                 finish()
-            })
-            .setNegativeButton("No", { dialog, id -> dialog.cancel() })
+            }).setNegativeButton("No", { dialog, id -> dialog.cancel() })
 
         // create alert dialog
         val alertDialog: AlertDialog = alertDialogBuilder.create()
@@ -242,6 +255,10 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
                 if (binding.drawer.isDrawerOpen(GravityCompat.START)) {
                     binding.drawer.closeDrawer(GravityCompat.START);
                 }
+            }
+
+            R.id.img_cart -> {
+                navController.navigate(R.id.yourCartFragment)
             }
         }
     }

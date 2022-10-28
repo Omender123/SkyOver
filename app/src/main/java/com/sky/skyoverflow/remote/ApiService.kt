@@ -35,15 +35,15 @@ interface ApiService {
     @FormUrlEncoded
     @POST("Authentication/verifyMobile")
     suspend fun VerifyMobile(
-        @Field("mobile") mobile:String,
-        @Field("otpcode") otp:String
+        @Field("mobile") mobile: String,
+        @Field("otpcode") otp: String
     ): Response<CommonRespons>
 
 
     @FormUrlEncoded
     @POST("Authentication/ResendOTP")
     suspend fun ResendOTP(
-        @Field("Mobile") mobile:String
+        @Field("Mobile") mobile: String
     ): Response<CheckLoginResponse>
 
 
@@ -61,8 +61,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("Authentication/verifyForgetPasswordOTP")
     suspend fun verifyForgetPasswordOTP(
-        @Field("Mobile") mobile:String,
-        @Field("OtpCode") otp:String
+        @Field("Mobile") mobile: String,
+        @Field("OtpCode") otp: String
     ): Response<CommonRespons>
 
     @GET("Authentication/GetDashBoard/{userID}")

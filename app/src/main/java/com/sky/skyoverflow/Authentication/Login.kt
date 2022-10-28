@@ -62,11 +62,17 @@ class Login : AppCompatActivity(), View.OnClickListener {
                 is NetworkResult.Success -> {
                     hideLoadingDialog()
                     response.data?.let {
-                        MyPreferences.getInstance(this).putBoolean(PrefConf.PREF_SEASON,true);
-                        MyPreferences.getInstance(this).putString(PrefConf.USER_SPONSER_ID,it.Data.UserName);
-                        MyPreferences.getInstance(this).putString(PrefConf.USER_NAME,it.Data.FirstName+" "+it.Data.LastName);
-                        MyPreferences.getInstance(this).putString(PrefConf.USER_MOBILE,it.Data.Mobile);
-                        MyPreferences.getInstance(this).putString(PrefConf.USER_EMAIL,it.Data.Email);
+                        MyPreferences.getInstance(this).putBoolean(PrefConf.PREF_SEASON, true);
+                        MyPreferences.getInstance(this)
+                            .putString(PrefConf.USER_SPONSER_ID, it.Data.UserName);
+                        MyPreferences.getInstance(this).putString(
+                            PrefConf.USER_NAME,
+                            it.Data.FirstName + " " + it.Data.LastName
+                        );
+                        MyPreferences.getInstance(this)
+                            .putString(PrefConf.USER_MOBILE, it.Data.Mobile);
+                        MyPreferences.getInstance(this)
+                            .putString(PrefConf.USER_EMAIL, it.Data.Email);
                         startActivity(Intent(this, MainActivity::class.java))
                         finish()
                         Toast.makeText(
@@ -111,8 +117,11 @@ class Login : AppCompatActivity(), View.OnClickListener {
                     binding.edPass.requestFocus()
                     Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show()
                 } else {
-                    showLoadingDialog()
-                    loginViewModel.fetchCheckLoginResponse(username!!, password!!)
+                    MyPreferences.getInstance(this).putBoolean(PrefConf.PREF_SEASON, true);
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                    /*  showLoadingDialog()
+                      loginViewModel.fetchCheckLoginResponse(username!!, password!!)*/
 
                 }
             }

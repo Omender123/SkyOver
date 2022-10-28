@@ -48,11 +48,11 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
         AppUtils.checkAndRequestPermissions(requireActivity())
         loadingDialog = LoadingDialog(requireContext())
         userId =
-            MyPreferences.getInstance(requireContext()).getString(PrefConf.USER_SPONSER_ID, null)
+            MyPreferences.getInstance(requireContext()).getString(PrefConf.USER_SPONSER_ID, "0")
 
-        deshboardViewModel.fetchDeshBoardResponse(userId!!)
+       // deshboardViewModel.fetchDeshBoardResponse(userId!!)
         Log.e("userId", userId!!)
-        GetDashboardObservel();
+      //  GetDashboardObservel();
         binding.imgWallets.setOnClickListener(this)
         binding.imgAdd.setOnClickListener(this)
         binding.imgTransfer.setOnClickListener(this)

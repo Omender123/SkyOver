@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/corner12"
+    android:backgroundTint="@color/white"
+    android:orientation="vertical"
+    android:layout_margin="8dp"
+    android:padding="8dp">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/image"
+        app:riv_corner_radius_top_left="12dp"
+        app:riv_corner_radius_top_right="12dp"/>
+
+    <TextView
+        android:id="@+id/txt_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HP WIRELESS NECK BAND CL 125"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:textSize="15dp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textColor="@color/txt_38"
+        android:fontFamily="@font/poppins_medium"/>
+
+    <TextView
+        android:id="@+id/txt_mrp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MRP  ₹ 1499.00"
+        android:gravity="center"
+        android:layout_marginTop="4dp"
+        android:textSize="15dp"
+        android:textColor="#8A383838"
+        android:fontFamily="@font/poppins"/>
+    <TextView
+        android:id="@+id/txt_dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="DP Rate  ₹ 949.02 "
+        android:gravity="center"
+        android:layout_marginTop="4dp"
+        android:textSize="15dp"
+        android:textColor="#8A383838"
+        android:fontFamily="@font/poppins"/>
+    <TextView
+        android:id="@+id/txt_bv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BV  ₹ 949.00"
+        android:gravity="center"
+        android:layout_marginTop="4dp"
+        android:textSize="15dp"
+        android:textColor="@color/txt_38"
+        android:fontFamily="@font/poppins"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+ CART"
+        android:textColor="@color/white"
+        android:background="@drawable/corner8"
+        android:backgroundTint="@color/btn_color"
+        android:paddingTop="10dp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/poppins"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:paddingBottom="6dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"/>
+    
+</LinearLayout>

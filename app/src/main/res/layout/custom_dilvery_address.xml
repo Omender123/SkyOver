@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:visibility="gone">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/corner12"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+
+        <TextView
+            android:id="@+id/txt_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:fontFamily="@font/poppins"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="HOME"
+            android:textAllCaps="true"
+            android:textColor="#8A383838"
+            android:textSize="15dp" />
+
+
+        <TextView
+            android:id="@+id/txt_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-5dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Omender Singh"
+            android:textAllCaps="false"
+            android:textColor="#383838"
+            android:textSize="15dp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/txt_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins"
+            android:text="First floor, 221B Saket Metro station\nnear by old book store\nNew Delhi 110003"
+            android:textAllCaps="false"
+            android:textColor="#383838"
+            android:textSize="15dp"
+            android:textStyle="normal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="Mobile:"
+                android:textColor="#383838"
+                android:textSize="15dp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/txt_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="05dp"
+                android:fontFamily="@font/poppins"
+                android:text="+918766372989"
+                android:textColor="#80383838"
+                android:textSize="15dp" />
+
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/btn_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_edit_btn" />
+
+            <TextView
+                android:id="@+id/txt_checkbox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="15dp"
+                android:layout_toStartOf="@+id/checkbox"
+                android:layout_toEndOf="@+id/btn_edit"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center_vertical|end"
+                android:text="Deliver Here"
+                android:textColor="#5C5C77"
+                android:textSize="14sp" />
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="2.5dp"
+                android:checked="false"
+                android:background="@drawable/ic_checkbox_selector"
+                android:button="@null"
+                android:clickable="true"
+                android:focusable="false" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</layout>

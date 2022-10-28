@@ -80,7 +80,17 @@
         android:id="@+id/RepurchaseFragment"
         android:name="com.sky.skyoverflow.Fragment.RepurchaseFragment"
         android:label="New Order"
-        tools:layout="@layout/fragment_repurchase" />
+        tools:layout="@layout/fragment_repurchase">
+        <action
+            android:id="@+id/action_RepurchaseFragment_to_yourCartFragment"
+            app:destination="@id/yourCartFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/yourCartFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/walletFragment"
         android:name="com.sky.skyoverflow.Fragment.Dashboard.WalletFragment"
@@ -228,4 +238,53 @@
         android:name="com.sky.skyoverflow.Fragment.Dashboard.MemberSuccessFragment"
         android:label="Member Activation"
         tools:layout="@layout/fragment_member_success" />
+    <fragment
+        android:id="@+id/yourCartFragment"
+        android:name="com.sky.skyoverflow.Fragment.Cart.YourCartFragment"
+        android:label="Your Cart"
+        tools:layout="@layout/fragment_your_cart">
+        <action
+            android:id="@+id/action_yourCartFragment_to_shippingAddressFragment"
+            app:destination="@id/shippingAddressFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/shippingAddressFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/shippingAddressFragment"
+        android:name="com.sky.skyoverflow.Fragment.Cart.ShippingAddressFragment"
+        android:label="Shipping Address"
+        tools:layout="@layout/fragment_shipping_address">
+        <action
+            android:id="@+id/action_shippingAddressFragment_to_deliveryAddressFragment"
+            app:destination="@id/deliveryAddressFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/deliveryAddressFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_shippingAddressFragment_to_paymentModeFragment"
+            app:destination="@id/paymentModeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/paymentModeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/deliveryAddressFragment"
+        android:name="com.sky.skyoverflow.Fragment.Cart.DeliveryAddressFragment"
+        android:label="Delivery Address"
+        tools:layout="@layout/fragment_delivery_address" />
+    <fragment
+        android:id="@+id/paymentModeFragment"
+        android:name="com.sky.skyoverflow.Fragment.Cart.PaymentModeFragment"
+        android:label="Payment Mode"
+        tools:layout="@layout/fragment_payment_mode" />
 </navigation>

@@ -21,4 +21,15 @@
         <item>Google Pay (9997751831)</item>
     </string-array>
 
+    <string-array name="address_type">
+        <item>More</item>
+        <item>Residence</item>
+        <item>School/College</item>
+        <item>Hostel</item>
+        <item>AirPort</item>
+        <item>Hotel</item>
+        <item>Other</item>
+
+    </string-array>
+
 </resources>
