@@ -18,11 +18,13 @@
         android:icon="@drawable/ic_member"
         android:menuCategory="secondary"
         android:title="MY TEAM" />
+<!--
     <item
         android:id="@id/Notification"
         android:icon="@drawable/ic_notification"
         android:menuCategory="secondary"
         android:title="NOTIFICATIONS" />
+-->
 
 
 </menu>

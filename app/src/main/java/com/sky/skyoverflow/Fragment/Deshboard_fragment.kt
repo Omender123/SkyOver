@@ -50,15 +50,16 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
         userId =
             MyPreferences.getInstance(requireContext()).getString(PrefConf.USER_SPONSER_ID, "0")
 
-       // deshboardViewModel.fetchDeshBoardResponse(userId!!)
+        // deshboardViewModel.fetchDeshBoardResponse(userId!!)
         Log.e("userId", userId!!)
-      //  GetDashboardObservel();
+        //  GetDashboardObservel();
         binding.imgWallets.setOnClickListener(this)
         binding.imgAdd.setOnClickListener(this)
         binding.imgTransfer.setOnClickListener(this)
         binding.imgMobileChar.setOnClickListener(this)
         binding.imgDthChar.setOnClickListener(this)
         binding.txtBuy.setOnClickListener(this)
+        binding.txtViewAll.setOnClickListener(this)
 
         return binding.root
     }
@@ -143,6 +144,10 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
             }
             R.id.txt_buy -> {
                 findNavController().navigate(R.id.action_Dashboard_to_membeActivitionFragment)
+            }
+
+            R.id.txt_viewAll -> {
+                findNavController().navigate(R.id.action_Dashboard_to_totalEarningsFragment)
             }
 
         }

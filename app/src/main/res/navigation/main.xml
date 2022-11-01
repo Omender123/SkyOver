@@ -64,6 +64,15 @@
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/membeActivitionFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_Dashboard_to_totalEarningsFragment"
+            app:destination="@id/totalEarningsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/totalEarningsFragment"
+            app:popUpToInclusive="true" />
 
     </fragment>
     <fragment
@@ -287,4 +296,35 @@
         android:name="com.sky.skyoverflow.Fragment.Cart.PaymentModeFragment"
         android:label="Payment Mode"
         tools:layout="@layout/fragment_payment_mode" />
+    <fragment
+        android:id="@+id/orderHistoryFragment"
+        android:name="com.sky.skyoverflow.Fragment.Cart.OrderHistoryFragment"
+        android:label="Order History"
+        tools:layout="@layout/fragment_order_history" />
+    <fragment
+        android:id="@+id/totalEarningsFragment"
+        android:name="com.sky.skyoverflow.Fragment.Dashboard.TotalEarningsFragment"
+        android:label="Total Earnings"
+        tools:layout="@layout/fragment_total_earnings">
+        <action
+            android:id="@+id/action_totalEarningsFragment_to_incomeFragment"
+            app:destination="@id/incomeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/incomeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/incomeFragment"
+        android:name="com.sky.skyoverflow.Fragment.Dashboard.IncomeFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_income">
+        <argument
+            android:name="title"
+            android:defaultValue="null"
+            app:argType="string" />
+
+    </fragment>
 </navigation>

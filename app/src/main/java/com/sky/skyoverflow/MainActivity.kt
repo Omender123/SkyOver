@@ -77,7 +77,8 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
                 || destination.id == R.id.uploadDocFragment || destination.id == R.id.changePasswordFragment || destination.id == R.id.addBankFragment
                 || destination.id == R.id.editProfileFragment || destination.id == R.id.supportFragment || destination.id == R.id.mobileRechargeFragment
                 || destination.id == R.id.DTHRechargeFragment || destination.id == R.id.membeActivitionFragment || destination.id == R.id.shippingAddressFragment
-                || destination.id == R.id.deliveryAddressFragment|| destination.id == R.id.paymentModeFragment
+                || destination.id == R.id.deliveryAddressFragment || destination.id == R.id.paymentModeFragment || destination.id == R.id.orderHistoryFragment
+                || destination.id == R.id.totalEarningsFragment || destination.id == R.id.incomeFragment
             ) {
                 binding.includedLayout.relative.visibility = View.VISIBLE
                 binding.includedLayout.toolbar.navigationIcon =
@@ -86,9 +87,15 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
                 binding.includedLayout.imgCart.visibility = View.GONE
                 binding.includedLayout.txtWel.visibility = View.GONE
                 binding.includedLayout.txtLebel.visibility = View.VISIBLE
-                binding.includedLayout.txtLebel.text = destination.label
                 binding.includedLayout.imgOrderHistory.visibility = View.GONE
                 binding.includedLayout.bottomNavigation.visibility = View.GONE
+                if (destination.label.toString().equals("{title}", true)) {
+                    binding.includedLayout.txtLebel.text =
+                        binding.includedLayout.toolbar.title.toString()
+                } else {
+                    binding.includedLayout.txtLebel.text = destination.label
+                }
+                Log.d("destination", binding.includedLayout.toolbar.title.toString())
             } else if (destination.id == R.id.memberSuccessFragment) {
                 binding.includedLayout.relative.visibility = View.GONE
                 binding.includedLayout.imgCart.visibility = View.GONE
@@ -133,6 +140,7 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
         }
         moreNavigationOptions()
         binding.includedLayout.imgCart.setOnClickListener(this)
+        binding.includedLayout.imgOrderHistory.setOnClickListener(this)
     }
 
     private fun moreNavigationOptions() {
@@ -259,6 +267,10 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
 
             R.id.img_cart -> {
                 navController.navigate(R.id.yourCartFragment)
+            }
+
+            R.id.img_orderHistory -> {
+                navController.navigate(R.id.orderHistoryFragment)
             }
         }
     }
