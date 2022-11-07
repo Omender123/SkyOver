@@ -71,5 +71,9 @@ interface ApiService {
         @Path("operator") OperatorType: String
     ): Response<OperatorResponse>
 
+    @GET("Authentication/GetRechargeHistory/{userID}")
+    suspend fun GetRechargeHistory(
+        @Path("userID") userID: String
+    ): Response<ReHistoryResponse>
 }
 

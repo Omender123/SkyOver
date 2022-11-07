@@ -36,4 +36,6 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
     suspend fun GetOperator(OperatorType: String) =
         apiService.GetOperator(OperatorType)
 
+    suspend fun GetRechargeHistory(userID: String) =
+        apiService.GetRechargeHistory(userID)
 }
