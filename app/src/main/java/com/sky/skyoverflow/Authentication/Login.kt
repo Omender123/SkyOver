@@ -117,11 +117,9 @@ class Login : AppCompatActivity(), View.OnClickListener {
                     binding.edPass.requestFocus()
                     Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show()
                 } else {
-                    MyPreferences.getInstance(this).putBoolean(PrefConf.PREF_SEASON, true);
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish()
-                    /*  showLoadingDialog()
-                      loginViewModel.fetchCheckLoginResponse(username!!, password!!)*/
+
+                      showLoadingDialog()
+                      loginViewModel.fetchCheckLoginResponse(username!!, password!!)
 
                 }
             }

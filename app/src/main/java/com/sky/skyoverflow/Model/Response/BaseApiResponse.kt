@@ -1,4 +1,4 @@
-package com.sky.skyoverflow.Model
+package com.sky.skyoverflow.Model.Response
 
 
 import com.sky.skyoverflow.Utils.NetworkResult

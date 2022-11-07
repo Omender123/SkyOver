@@ -73,6 +73,24 @@
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/totalEarningsFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_Dashboard_to_reHistoryFragment"
+            app:destination="@id/reHistoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/reHistoryFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_Dashboard_to_waterBillFragment"
+            app:destination="@id/BillFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/BillFragment"
+            app:popUpToInclusive="true" />
 
     </fragment>
     <fragment
@@ -326,5 +344,20 @@
             android:defaultValue="null"
             app:argType="string" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/reHistoryFragment"
+        android:name="com.sky.skyoverflow.Fragment.Recharge.ReHistoryFragment"
+        android:label="Recharge History"
+        tools:layout="@layout/fragment_re_history" />
+    <fragment
+        android:id="@+id/BillFragment"
+        android:name="com.sky.skyoverflow.Fragment.Recharge.BillPayFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_bill_pay">
+        <argument
+            android:name="title"
+            android:defaultValue="null"
+            app:argType="string" />
     </fragment>
 </navigation>

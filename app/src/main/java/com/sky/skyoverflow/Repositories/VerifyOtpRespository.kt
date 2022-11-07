@@ -1,9 +1,8 @@
 package com.sky.skyoverflow.Repositories
 
-import com.sky.skyoverflow.Model.BaseApiResponse
-import com.sky.skyoverflow.Model.CheckLoginResponse
-import com.sky.skyoverflow.Model.CommonRespons
-import com.sky.skyoverflow.Model.StateResponse
+import com.sky.skyoverflow.Model.Response.BaseApiResponse
+import com.sky.skyoverflow.Model.Response.CheckLoginResponse
+import com.sky.skyoverflow.Model.Response.CommonRespons
 import com.sky.skyoverflow.Utils.NetworkResult
 import com.sky.skyoverflow.remote.RemoteDataSource
 import dagger.hilt.android.scopes.ActivityRetainedScoped

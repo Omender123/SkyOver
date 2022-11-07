@@ -5,11 +5,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.sky.skyoverflow.Authentication.Resgister
-import com.sky.skyoverflow.Model.CheckLoginResponse
 import com.sky.skyoverflow.Model.RequestBody.ResgisterBody
-import com.sky.skyoverflow.Model.StateResponse
-import com.sky.skyoverflow.Repositories.LoginRepository
+import com.sky.skyoverflow.Model.Response.StateResponse
 import com.sky.skyoverflow.Repositories.ResgisterRepository
 import com.sky.skyoverflow.Utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel

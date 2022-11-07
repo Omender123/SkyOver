@@ -1,12 +1,8 @@
 package com.sky.skyoverflow.remote
 
 
-import com.sky.skyoverflow.Authentication.Resgister
-import com.sky.skyoverflow.Model.CheckLoginResponse
-import com.sky.skyoverflow.Model.CommonRespons
-import com.sky.skyoverflow.Model.DashboradResponse
 import com.sky.skyoverflow.Model.RequestBody.ResgisterBody
-import com.sky.skyoverflow.Model.StateResponse
+import com.sky.skyoverflow.Model.Response.*
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.Body
@@ -69,6 +65,11 @@ interface ApiService {
     suspend fun GetDashBoard(
         @Path("userID") userID: String
     ): Response<DashboradResponse>
+
+    @GET("Authentication/GetOperator/{operator}")
+    suspend fun GetOperator(
+        @Path("operator") OperatorType: String
+    ): Response<OperatorResponse>
 
 }
 

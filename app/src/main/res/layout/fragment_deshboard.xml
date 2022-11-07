@@ -150,11 +150,11 @@
                 android:src="@drawable/ic_fast_tag_char" />
 
             <ImageView
+                android:id="@+id/re_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:src="@drawable/ic_water_char"
-                android:visibility="invisible" />
+                android:src="@drawable/ic_history" />
 
             <ImageView
                 android:layout_width="match_parent"

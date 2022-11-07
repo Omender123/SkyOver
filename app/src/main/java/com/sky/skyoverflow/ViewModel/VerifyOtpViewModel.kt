@@ -5,16 +5,12 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.sky.skyoverflow.Model.CheckLoginResponse
-import com.sky.skyoverflow.Model.CommonRespons
-import com.sky.skyoverflow.Model.RequestBody.ResgisterBody
-import com.sky.skyoverflow.Model.StateResponse
-import com.sky.skyoverflow.Repositories.ResgisterRepository
+import com.sky.skyoverflow.Model.Response.CheckLoginResponse
+import com.sky.skyoverflow.Model.Response.CommonRespons
 import com.sky.skyoverflow.Repositories.VerifyOtpRespository
 import com.sky.skyoverflow.Utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import okhttp3.ResponseBody
 import javax.inject.Inject
 
 @HiltViewModel

@@ -33,4 +33,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
     suspend fun GetDashBoard(userID: String) =
         apiService.GetDashBoard(userID)
 
+    suspend fun GetOperator(OperatorType: String) =
+        apiService.GetOperator(OperatorType)
+
 }

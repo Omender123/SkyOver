@@ -6,9 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.sky.skyoverflow.Model.Dashborad
+import com.sky.skyoverflow.Model.Response.Dashborad
 import com.sky.skyoverflow.R
-import com.sky.skyoverflow.databinding.FragmentMemberBinding
 import com.sky.skyoverflow.databinding.FragmentWalletBinding
 
 

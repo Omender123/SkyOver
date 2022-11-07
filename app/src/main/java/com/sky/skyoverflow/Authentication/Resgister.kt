@@ -9,19 +9,14 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
-import com.sky.skyoverflow.Model.Data1
 import com.sky.skyoverflow.Model.RequestBody.ResgisterBody
 import com.sky.skyoverflow.R
 import com.sky.skyoverflow.Utils.AppUtils
 import com.sky.skyoverflow.Utils.LoadingDialog
 import com.sky.skyoverflow.Utils.NetworkResult
 import com.sky.skyoverflow.ViewModel.ResgisterViewModel
-import com.sky.skyoverflow.databinding.ActivityLoginBinding
 import com.sky.skyoverflow.databinding.ActivityResgisterBinding
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.scopes.ActivityRetainedScoped
 import org.json.JSONObject
 
 @AndroidEntryPoint

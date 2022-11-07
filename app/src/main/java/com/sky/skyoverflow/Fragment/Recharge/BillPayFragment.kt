@@ -11,7 +11,9 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.sky.skyoverflow.Adapter.OperatorAdapter
+import com.sky.skyoverflow.Fragment.Dashboard.IncomeFragmentArgs
 import com.sky.skyoverflow.Model.Response.Operator
 import com.sky.skyoverflow.R
 import com.sky.skyoverflow.SharedPerfence.MyPreferences
@@ -19,23 +21,21 @@ import com.sky.skyoverflow.SharedPerfence.PrefConf
 import com.sky.skyoverflow.Utils.LoadingDialog
 import com.sky.skyoverflow.Utils.NetworkResult
 import com.sky.skyoverflow.ViewModel.RechargeViewModel
-import com.sky.skyoverflow.databinding.FragmentDthRechargeBinding
-import com.sky.skyoverflow.databinding.FragmentMobileRechargeBinding
+import com.sky.skyoverflow.databinding.FragmentBillPayBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
-class DTHRechargeFragment : Fragment(), AdapterView.OnItemSelectedListener {
-    private lateinit var binding: FragmentDthRechargeBinding
+class BillPayFragment : Fragment(), AdapterView.OnItemSelectedListener {
+    private lateinit var binding: FragmentBillPayBinding
     lateinit var loadingDialog: LoadingDialog
     private val rechargeViewModel: RechargeViewModel by viewModels()
     private var mainBal: String? = null
     private var walletType: String? = null
     private var operatorType: String? = null
     private lateinit var data: ArrayList<Operator>
-
+    val args: BillPayFragmentArgs by navArgs()
+    var title: String? = null
     var walletList = arrayOf("Select Payment Mode", "Main Wallet")
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,19 +46,34 @@ class DTHRechargeFragment : Fragment(), AdapterView.OnItemSelectedListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        // Inflate the layout for this fragment
-        binding = FragmentDthRechargeBinding.inflate(inflater, container, false)
+
+        binding = FragmentBillPayBinding.inflate(inflater, container, false)
+
         loadingDialog = LoadingDialog(requireContext())
-
-        rechargeViewModel.fetchOperatorResponse("dth")
-        GetOperatorObservel()
-
+        if (args != null) {
+            title = args.title
+            if (title.equals("Water Bill", true)) {
+                rechargeViewModel.fetchOperatorResponse("water")
+                binding.edConnectionId.hint = "Connection Id"
+            } else if (title.equals("Electric Bill", true)) {
+                rechargeViewModel.fetchOperatorResponse("electric")
+                binding.edConnectionId.hint = "CA Number"
+            } else if (title.equals("Gas Bill", true)) {
+                rechargeViewModel.fetchOperatorResponse("gas")
+                binding.edConnectionId.hint = "Customer Number"
+            }else if (title.equals("Fastag Recharge", true)) {
+                rechargeViewModel.fetchOperatorResponse("fastag")
+                binding.edConnectionId.hint = "Vehicle Registration Number"
+            }
+        }
         mainBal =
             resources.getString(R.string.rupee_sign) + MyPreferences.getInstance(requireContext())
                 .getString(
                     PrefConf.USER_MAINWALLETBALANCE, "0"
                 )
+
+
+        GetOperatorObservel()
         binding.txtMainBal.text = mainBal
         binding.paymentSpinner.setOnItemSelectedListener(this)
         binding.OperatorSpinner.setOnItemSelectedListener(this)
@@ -70,12 +85,13 @@ class DTHRechargeFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
 
         binding.paymentSpinner.setAdapter(paymentSpinner)
+        //   binding.OperatorSpinner.setAdapter(OperatorSpinner)
 
         binding.paymentSpinner.setOnItemSelectedListener(this)
         binding.OperatorSpinner.setOnItemSelectedListener(this)
 
-        return binding.root
 
+        return binding.root
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -150,5 +166,6 @@ class DTHRechargeFragment : Fragment(), AdapterView.OnItemSelectedListener {
             }
         }
     }
+
 
 }

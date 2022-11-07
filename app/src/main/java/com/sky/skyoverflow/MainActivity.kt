@@ -4,17 +4,18 @@ package com.sky.skyoverflow
 import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -22,6 +23,7 @@ import androidx.navigation.ui.NavigationUI
 import com.sky.skyoverflow.Authentication.Login
 import com.sky.skyoverflow.SharedPerfence.MyPreferences
 import com.sky.skyoverflow.SharedPerfence.PrefConf
+import com.sky.skyoverflow.Utils.AppUtils
 import com.sky.skyoverflow.Utils.LoadingDialog
 import com.sky.skyoverflow.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,7 +34,8 @@ import java.io.File
 
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View.OnClickListener {
+class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View.OnClickListener,
+    DrawerLayout.DrawerListener {
     lateinit var loadingDialog: LoadingDialog
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
@@ -61,6 +64,8 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
             resources.getDrawable(R.drawable.ic_menu_icon)
         NavigationUI.setupWithNavController(binding.includedLayout.bottomNavigation, navController)
 
+        binding.drawer.addDrawerListener(this)
+
         navController?.addOnDestinationChangedListener { controller, destination, arguments ->
             if (destination.id == R.id.Dashboard) {
                 binding.includedLayout.relative.visibility = View.VISIBLE
@@ -78,7 +83,7 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
                 || destination.id == R.id.editProfileFragment || destination.id == R.id.supportFragment || destination.id == R.id.mobileRechargeFragment
                 || destination.id == R.id.DTHRechargeFragment || destination.id == R.id.membeActivitionFragment || destination.id == R.id.shippingAddressFragment
                 || destination.id == R.id.deliveryAddressFragment || destination.id == R.id.paymentModeFragment || destination.id == R.id.orderHistoryFragment
-                || destination.id == R.id.totalEarningsFragment || destination.id == R.id.incomeFragment
+                || destination.id == R.id.totalEarningsFragment || destination.id == R.id.incomeFragment || destination.id == R.id.reHistoryFragment || destination.id == R.id.BillFragment
             ) {
                 binding.includedLayout.relative.visibility = View.VISIBLE
                 binding.includedLayout.toolbar.navigationIcon =
@@ -272,6 +277,30 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
             R.id.img_orderHistory -> {
                 navController.navigate(R.id.orderHistoryFragment)
             }
+        }
+    }
+
+    override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
+
+    }
+
+    override fun onDrawerOpened(drawerView: View) {
+        changeStatusBarColor()
+    }
+
+    override fun onDrawerClosed(drawerView: View) {
+        AppUtils.setStatusBarGradiant(this)
+    }
+
+    override fun onDrawerStateChanged(newState: Int) {
+
+    }
+
+    private fun changeStatusBarColor() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window: Window = window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.setStatusBarColor(Color.TRANSPARENT)
         }
     }
 }

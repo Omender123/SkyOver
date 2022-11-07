@@ -1,6 +1,5 @@
 package com.sky.skyoverflow.Fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,13 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.sky.skyoverflow.MainActivity
-import com.sky.skyoverflow.Model.Dashborad
-import com.sky.skyoverflow.Model.DashboradResponse
+import com.sky.skyoverflow.Fragment.Dashboard.TotalEarningsFragmentDirections
+import com.sky.skyoverflow.Model.Response.Dashborad
 import com.sky.skyoverflow.R
 import com.sky.skyoverflow.SharedPerfence.MyPreferences
 import com.sky.skyoverflow.SharedPerfence.PrefConf
@@ -22,8 +19,6 @@ import com.sky.skyoverflow.Utils.AppUtils
 import com.sky.skyoverflow.Utils.LoadingDialog
 import com.sky.skyoverflow.Utils.NetworkResult
 import com.sky.skyoverflow.ViewModel.DeshboardViewModel
-import com.sky.skyoverflow.ViewModel.LoginViewModel
-import com.sky.skyoverflow.databinding.ActivityLoginBinding
 import com.sky.skyoverflow.databinding.FragmentDeshboardBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -50,9 +45,9 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
         userId =
             MyPreferences.getInstance(requireContext()).getString(PrefConf.USER_SPONSER_ID, "0")
 
-        // deshboardViewModel.fetchDeshBoardResponse(userId!!)
+        deshboardViewModel.fetchDeshBoardResponse(userId!!)
         Log.e("userId", userId!!)
-        //  GetDashboardObservel();
+        GetDashboardObservel();
         binding.imgWallets.setOnClickListener(this)
         binding.imgAdd.setOnClickListener(this)
         binding.imgTransfer.setOnClickListener(this)
@@ -60,6 +55,11 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
         binding.imgDthChar.setOnClickListener(this)
         binding.txtBuy.setOnClickListener(this)
         binding.txtViewAll.setOnClickListener(this)
+        binding.reHistory.setOnClickListener(this)
+        binding.imgWaterChar.setOnClickListener(this)
+        binding.imgElectChar.setOnClickListener(this)
+        binding.imgGasChar.setOnClickListener(this)
+        binding.imgFastChar.setOnClickListener(this)
 
         return binding.root
     }
@@ -149,6 +149,34 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
             R.id.txt_viewAll -> {
                 findNavController().navigate(R.id.action_Dashboard_to_totalEarningsFragment)
             }
+
+            R.id.re_history -> {
+                findNavController().navigate(R.id.action_Dashboard_to_reHistoryFragment)
+            }
+
+            R.id.img_water_char -> {
+                val directions = Deshboard_fragmentDirections.actionDashboardToWaterBillFragment()
+                directions.title = "Water Bill"
+                findNavController().navigate(directions)
+            }
+            R.id.img_elect_char -> {
+                val directions = Deshboard_fragmentDirections.actionDashboardToWaterBillFragment()
+                directions.title = "Electric Bill"
+                findNavController().navigate(directions)
+            }
+
+            R.id.img_gas_char -> {
+                val directions = Deshboard_fragmentDirections.actionDashboardToWaterBillFragment()
+                directions.title = "Gas Bill"
+                findNavController().navigate(directions)
+            }
+
+            R.id.img_fast_char -> {
+                val directions = Deshboard_fragmentDirections.actionDashboardToWaterBillFragment()
+                directions.title = "Fastag Recharge"
+                findNavController().navigate(directions)
+            }
+
 
         }
     }

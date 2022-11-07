@@ -5,10 +5,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.sky.skyoverflow.Model.CheckLoginResponse
-import com.sky.skyoverflow.Model.CommonRespons
+import com.sky.skyoverflow.Model.Response.CommonRespons
 import com.sky.skyoverflow.Repositories.ForgetPasswordRespository
-import com.sky.skyoverflow.Repositories.LoginRepository
 import com.sky.skyoverflow.Utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
