@@ -51,7 +51,8 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
         navController = findNavController(R.id.main_fragment)
         setSupportActionBar(binding.includedLayout.toolbar);
         binding.includedLayout.txtName.text =
-            MyPreferences.getInstance(this).getString(PrefConf.USER_NAME, "GUEST")
+            MyPreferences.getInstance(this).getString(PrefConf.USER_FNAME, "GUEST") + " " +
+                    MyPreferences.getInstance(this).getString(PrefConf.USER_LNAME, "")
 
         appBarConfiguration =
             AppBarConfiguration.Builder(navController.graph).setDrawerLayout(binding.drawer).build()
@@ -160,7 +161,9 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
 
         var navHeader: View = binding.navigationView.getHeaderView(0)
         navHeader.findViewById<TextView>(R.id.txt_name).text =
-            MyPreferences.getInstance(this).getString(PrefConf.USER_NAME, "GUEST")
+            MyPreferences.getInstance(this)
+                .getString(PrefConf.USER_FNAME, "GUEST") + " " + MyPreferences.getInstance(this)
+                .getString(PrefConf.USER_LNAME, "")
         navHeader.findViewById<TextView>(R.id.txt_mobile).text =
             MyPreferences.getInstance(this).getString(PrefConf.USER_MOBILE, "9999999999")
 

@@ -65,10 +65,10 @@ class Login : AppCompatActivity(), View.OnClickListener {
                         MyPreferences.getInstance(this).putBoolean(PrefConf.PREF_SEASON, true);
                         MyPreferences.getInstance(this)
                             .putString(PrefConf.USER_SPONSER_ID, it.Data.UserName);
-                        MyPreferences.getInstance(this).putString(
-                            PrefConf.USER_NAME,
-                            it.Data.FirstName + " " + it.Data.LastName
-                        );
+                        MyPreferences.getInstance(this)
+                            .putString(PrefConf.USER_FNAME, it.Data.FirstName);
+                        MyPreferences.getInstance(this)
+                            .putString(PrefConf.USER_LNAME, it.Data.LastName);
                         MyPreferences.getInstance(this)
                             .putString(PrefConf.USER_MOBILE, it.Data.Mobile);
                         MyPreferences.getInstance(this)
@@ -118,8 +118,8 @@ class Login : AppCompatActivity(), View.OnClickListener {
                     Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show()
                 } else {
 
-                      showLoadingDialog()
-                      loginViewModel.fetchCheckLoginResponse(username!!, password!!)
+                    showLoadingDialog()
+                    loginViewModel.fetchCheckLoginResponse(username!!, password!!)
 
                 }
             }

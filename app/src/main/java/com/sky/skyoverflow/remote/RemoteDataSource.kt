@@ -1,6 +1,7 @@
 package com.sky.skyoverflow.remote
 
 
+import com.sky.skyoverflow.Model.RequestBody.ProfileDetailsUpdateBody
 import com.sky.skyoverflow.Model.RequestBody.ResgisterBody
 import javax.inject.Inject
 
@@ -38,4 +39,12 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
 
     suspend fun GetRechargeHistory(userID: String) =
         apiService.GetRechargeHistory(userID)
+
+    suspend fun GetMemberDetails(userID: String) =
+        apiService.GetMemberDetails(userID)
+
+    suspend fun UpdateUserProfile(body: ProfileDetailsUpdateBody) =
+        apiService.UpdateUserProfile(body)
+
+
 }

@@ -47,7 +47,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:text="janeco"
                 android:textColor="#383838"
                 android:textSize="15dp" />
 
@@ -73,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:text="jane Cooper"
+
                 android:textColor="#383838"
                 android:textSize="15dp" />
 
@@ -99,7 +98,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:text="janecooper@gmail.com"
                 android:textColor="#383838"
                 android:textSize="15dp" />
 
@@ -125,7 +123,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:text="+911234567890"
                 android:textColor="#383838"
                 android:textSize="15dp" />
 
@@ -152,7 +149,6 @@
                 android:layout_height="wrap_content"
                 android:drawableRight="@drawable/ic_share"
                 android:fontFamily="@font/poppins_medium"
-                android:text="S000001"
                 android:textColor="#383838"
                 android:textSize="15dp" />
 

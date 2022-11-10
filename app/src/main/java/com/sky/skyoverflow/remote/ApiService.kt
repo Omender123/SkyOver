@@ -1,6 +1,7 @@
 package com.sky.skyoverflow.remote
 
 
+import com.sky.skyoverflow.Model.RequestBody.ProfileDetailsUpdateBody
 import com.sky.skyoverflow.Model.RequestBody.ResgisterBody
 import com.sky.skyoverflow.Model.Response.*
 import okhttp3.ResponseBody
@@ -75,5 +76,15 @@ interface ApiService {
     suspend fun GetRechargeHistory(
         @Path("userID") userID: String
     ): Response<ReHistoryResponse>
+
+    @GET("Authentication/MemberDetails/{userID}")
+    suspend fun GetMemberDetails(
+        @Path("userID") userID: String
+    ): Response<ProfileDetailsResponse>
+
+    @POST("Authentication/UpdateUserProfile")
+    suspend fun UpdateUserProfile(
+      @Body body:ProfileDetailsUpdateBody
+    ): Response<CommonRespons>
 }
 

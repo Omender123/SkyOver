@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,176 +7,209 @@
     android:background="@color/purple_700"
     tools:context=".Fragment.SlideMenu.EditProfileFragment">
 
-
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <EditText
+            android:id="@+id/ed_fname"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/corner8"
+            android:drawableLeft="@drawable/ic_username"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/poppins"
+            android:hint="First Name"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/hint_txt"
+            android:textSize="15dp" />
 
-            <EditText
-                android:id="@+id/ed_name"
-                android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/ed_lname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/corner8"
+            android:drawableLeft="@drawable/ic_username"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/poppins"
+            android:hint="Last Name"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/hint_txt"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/ed_fathername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/corner8"
+            android:drawableLeft="@drawable/ic_father_icon"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/poppins"
+            android:hint="Father Name"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/hint_txt"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/ed_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/corner8"
+            android:drawableLeft="@drawable/ic_calender"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/hint_txt"
+            android:fontFamily="@font/poppins"
+            android:hint="Select of Date of Birth"
+            android:padding="15dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/hint_txt"
+            android:textSize="15dp" />
+
+
+        <EditText
+            android:id="@+id/ed_pan_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/corner8"
+            android:drawableLeft="@drawable/ic_doc_no"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/hint_txt"
+            android:fontFamily="@font/poppins"
+            android:hint="Pan Card no."
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/hint_txt"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/ed_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/corner8"
+            android:drawableLeft="@drawable/ic_phone_icon"
+            android:drawablePadding="10dp"
+            android:editable="false"
+            android:enabled="false"
+            android:fontFamily="@font/poppins"
+            android:hint="Mobile No."
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/hint_txt"
+            android:textSize="15dp" />
+
+        <EditText
+            android:id="@+id/ed_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/corner8"
+            android:drawableLeft="@drawable/ic_mail_icon"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/poppins"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:padding="15dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/hint_txt"
+            android:textSize="15dp" />
+
+
+        <RadioGroup
+            android:id="@+id/rg_gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rd_male"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="15dp"
-                android:background="@drawable/corner8"
-                android:drawableLeft="@drawable/ic_username"
-                android:drawablePadding="10dp"
+                android:button="@drawable/radio_selector"
+                android:buttonTint="@color/white"
+                android:buttonTintMode="multiply"
+                android:checked="false"
                 android:fontFamily="@font/poppins"
-                android:hint="Name"
-                android:inputType="text"
+                android:gravity="center_vertical|center_horizontal"
                 android:padding="15dp"
-                android:textColor="#000000"
-                android:textColorHint="@color/hint_txt"
-                android:textSize="15dp" />
+                android:text="Male"
+                android:textColor="@color/txt_38"
+                android:textSize="16dp" />
 
-            <TextView
-                android:id="@+id/ed_date"
-                android:layout_width="match_parent"
+
+            <RadioButton
+                android:id="@+id/rd_female"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="15dp"
-                android:background="@drawable/corner8"
-                android:drawableLeft="@drawable/ic_calender"
-                android:drawablePadding="10dp"
-                android:drawableTint="@color/hint_txt"
+                android:layout_marginStart="20dp"
+                android:button="@drawable/radio_selector"
+                android:buttonTint="@color/white"
+                android:buttonTintMode="multiply"
+                android:checked="false"
                 android:fontFamily="@font/poppins"
-                android:hint="Date of Birth"
+                android:gravity="center_vertical|center_horizontal"
                 android:padding="15dp"
-                android:textColor="#000000"
-                android:textColorHint="@color/hint_txt"
-                android:textSize="15dp" />
+                android:text="Female"
+                android:textColor="@color/txt_38"
+                android:textSize="16dp" />
 
 
-            <EditText
-                android:id="@+id/ed_pan_no"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="15dp"
-                android:background="@drawable/corner8"
-                android:drawableLeft="@drawable/ic_doc_no"
-                android:drawablePadding="10dp"
-                android:drawableTint="@color/hint_txt"
-                android:fontFamily="@font/poppins"
-                android:hint="Pan Card no."
-                android:inputType="text"
-                android:padding="12dp"
-                android:textColor="#000000"
-                android:textColorHint="@color/hint_txt"
-                android:textSize="15dp" />
-
-            <EditText
-                android:id="@+id/ed_mobile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="15dp"
-                android:background="@drawable/corner8"
-                android:drawableLeft="@drawable/ic_phone_icon"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/poppins"
-                android:hint="Mobile No."
-                android:inputType="text"
-                android:padding="15dp"
-                android:textColor="#000000"
-                android:textColorHint="@color/hint_txt"
-                android:textSize="15dp" />
-
-            <EditText
-                android:id="@+id/ed_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="15dp"
-                android:background="@drawable/corner8"
-                android:drawableLeft="@drawable/ic_mail_icon"
-                android:drawablePadding="10dp"
-                android:fontFamily="@font/poppins"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:padding="15dp"
-                android:textColor="#000000"
-                android:textColorHint="@color/hint_txt"
-                android:textSize="15dp" />
+        </RadioGroup>
 
 
-            <RadioGroup
-                android:id="@+id/rg_gender"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="15dp"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/rd_male"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:button="@drawable/radio_selector"
-                    android:buttonTint="@color/white"
-                    android:buttonTintMode="multiply"
-                    android:checked="false"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:padding="15dp"
-                    android:text="Male"
-                    android:textColor="@color/txt_38"
-                    android:textSize="16dp" />
+        <TextView
+            android:background="@drawable/corner8"
+            android:backgroundTint="@color/btn_color"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center"
+            android:id="@+id/btn_update"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:text="Update"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="15dp" />
 
 
-                <RadioButton
-                    android:id="@+id/rd_female"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:button="@drawable/radio_selector"
-                    android:buttonTint="@color/white"
-                    android:buttonTintMode="multiply"
-                    android:checked="false"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:padding="15dp"
-                    android:text="Female"
-                    android:textColor="@color/txt_38"
-                    android:textSize="16dp" />
+    </LinearLayout>
 
+</androidx.core.widget.NestedScrollView>
 
-            </RadioGroup>
-
-
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
-
-
-    <TextView
-        android:id="@+id/btn_update"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="25dp"
-        android:background="@drawable/corner8"
-        android:backgroundTint="@color/btn_color"
-        android:fontFamily="@font/poppins_medium"
-        android:gravity="center"
-        android:text="Update"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="15dp" />
-
-</RelativeLayout>

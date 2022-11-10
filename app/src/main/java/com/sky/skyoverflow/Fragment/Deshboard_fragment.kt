@@ -1,5 +1,6 @@
 package com.sky.skyoverflow.Fragment
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -18,6 +20,7 @@ import com.sky.skyoverflow.SharedPerfence.PrefConf
 import com.sky.skyoverflow.Utils.AppUtils
 import com.sky.skyoverflow.Utils.LoadingDialog
 import com.sky.skyoverflow.Utils.NetworkResult
+import com.sky.skyoverflow.Utils.Utils
 import com.sky.skyoverflow.ViewModel.DeshboardViewModel
 import com.sky.skyoverflow.databinding.FragmentDeshboardBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,6 +37,7 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
         super.onCreate(savedInstanceState)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,6 +48,7 @@ class Deshboard_fragment : Fragment(), View.OnClickListener {
         loadingDialog = LoadingDialog(requireContext())
         userId =
             MyPreferences.getInstance(requireContext()).getString(PrefConf.USER_SPONSER_ID, "0")
+
 
         deshboardViewModel.fetchDeshBoardResponse(userId!!)
         Log.e("userId", userId!!)
