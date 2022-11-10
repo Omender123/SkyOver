@@ -13,7 +13,7 @@
             android:icon="@drawable/ic_account_setting"
             android:title="Account Settings" />
         <item
-            android:id="@+id/transfer"
+            android:id="@id/transfer_Fund_Fragment"
             android:icon="@drawable/ic_transfer_alt"
             android:title="Transfer Fund" />
 

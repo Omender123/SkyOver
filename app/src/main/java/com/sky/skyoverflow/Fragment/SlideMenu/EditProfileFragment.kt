@@ -69,8 +69,10 @@ class EditProfileFragment : Fragment(), View.OnClickListener, RadioGroup.OnCheck
 
         if (profileDetails?.gender.equals("0",true)){
             binding.rdMale.isChecked = true
+            gender ="male"
         }else if (profileDetails?.gender.equals("1",true)){
             binding.rdFemale.isChecked = true
+            gender ="female"
         }
 
         binding.rgGender.setOnCheckedChangeListener(this)
