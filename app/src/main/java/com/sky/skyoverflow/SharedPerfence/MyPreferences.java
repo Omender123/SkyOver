@@ -3,6 +3,9 @@ package com.sky.skyoverflow.SharedPerfence;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+import com.sky.skyoverflow.Model.Response.ProfileDetails;
+
 public class MyPreferences {
     private static MyPreferences pref;
     private SharedPreferences sharedPreference;
@@ -45,6 +48,20 @@ public class MyPreferences {
         editor.commit();
     }
 
+    public void putMemberDetails(String key, ProfileDetails value) {
+        Gson gson = new Gson();
+        String data = gson.toJson(value);
+        editor.putString(key, data);
+        editor.commit();
+    }
+
+
+    public ProfileDetails getMemberDetails(String key, String defValue) {
+        Gson gson = new Gson();
+        String json = sharedPreference.getString(key, defValue);
+        ProfileDetails obj = gson.fromJson(json, ProfileDetails.class);
+        return obj ;
+    }
 
     public String getString(String key, String defValue) {
         return sharedPreference.getString(key, defValue);

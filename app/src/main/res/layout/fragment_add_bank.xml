@@ -46,7 +46,7 @@
                 android:drawableLeft="@drawable/ant_design_bank_twotone"
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/poppins"
-                android:hint="Account Holder Name"
+                android:hint="Account  Number"
                 android:inputType="text"
                 android:padding="15dp"
                 android:textColor="#000000"

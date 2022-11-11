@@ -84,7 +84,16 @@ interface ApiService {
 
     @POST("Authentication/UpdateUserProfile")
     suspend fun UpdateUserProfile(
-      @Body body:ProfileDetailsUpdateBody
+        @Body body: ProfileDetailsUpdateBody
+    ): Response<CommonRespons>
+
+    @FormUrlEncoded
+    @POST("Authentication/ChangePassword")
+    suspend fun ChangePassword(
+        @Field("Mobile") Mobile: String,
+        @Field("OldPassword") OldPassword: String?,
+        @Field("NewPassword") NewPassword: String?,
+        @Field("ConfirmPassword") ConfirmPassword: String?
     ): Response<CommonRespons>
 }
 

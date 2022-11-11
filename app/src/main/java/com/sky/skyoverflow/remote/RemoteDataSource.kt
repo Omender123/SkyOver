@@ -46,5 +46,10 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
     suspend fun UpdateUserProfile(body: ProfileDetailsUpdateBody) =
         apiService.UpdateUserProfile(body)
 
-
+    suspend fun ChangePassword(
+        mobile: String,
+        oldPass: String?,
+        newPass: String?,
+        confirmPass: String?
+    ) = apiService.ChangePassword(mobile, oldPass, newPass, confirmPass)
 }

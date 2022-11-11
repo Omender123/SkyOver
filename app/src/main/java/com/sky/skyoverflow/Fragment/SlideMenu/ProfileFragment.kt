@@ -61,6 +61,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
                     hideLoadingDialog()
                     response.data?.let {
                         profileDetails = it.profileDetails
+                        MyPreferences.getInstance(requireContext()).putMemberDetails(PrefConf.PROFILE_DETAILS,profileDetails)
                         binding.txtUsername.text = it.profileDetails.loginid
                         binding.txtFullname.text = it.profileDetails.name+" "+it.profileDetails.lName
                         binding.txtEmail.text = it.profileDetails.emailID

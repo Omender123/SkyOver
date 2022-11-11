@@ -57,7 +57,7 @@ class EditProfileFragment : Fragment(), View.OnClickListener, RadioGroup.OnCheck
         binding.edFname.setText(profileDetails?.name ?: "")
         binding.edLname.setText(profileDetails?.lName ?: "")
         binding.edFathername.setText(profileDetails?.fatHusName ?: "")
-        if (profileDetails?.dob!=null){
+        if (profileDetails?.dob != null) {
             val parser = SimpleDateFormat("yyyy-MM-dd")
             val formatter = SimpleDateFormat("dd-MM-yyyy")
             val output: String = formatter.format(parser.parse(profileDetails?.dob))
@@ -67,17 +67,18 @@ class EditProfileFragment : Fragment(), View.OnClickListener, RadioGroup.OnCheck
         binding.edMobile.setText(profileDetails?.memMobile ?: "")
         binding.edEmail.setText(profileDetails?.emailID ?: "")
 
-        if (profileDetails?.gender.equals("0",true)){
+        if (profileDetails?.gender.equals("0", true)) {
             binding.rdMale.isChecked = true
-            gender ="male"
-        }else if (profileDetails?.gender.equals("1",true)){
+            gender = "male"
+        } else if (profileDetails?.gender.equals("1", true)) {
             binding.rdFemale.isChecked = true
-            gender ="female"
+            gender = "female"
         }
 
         binding.rgGender.setOnCheckedChangeListener(this)
         binding.btnUpdate.setOnClickListener(this)
         binding.edDate.setOnClickListener(this)
+        GetUpdateProfileDetailsObservel()
         return binding.root
     }
 
@@ -92,6 +93,7 @@ class EditProfileFragment : Fragment(), View.OnClickListener, RadioGroup.OnCheck
                     Toast.makeText(requireContext(), "All Field is require", Toast.LENGTH_SHORT)
                         .show()
                 } else {
+                    showLoadingDialog()
                     val body = ProfileDetailsUpdateBody(
                         binding.edFname.text.toString(),
                         binding.edLname.text.toString(),
@@ -102,10 +104,10 @@ class EditProfileFragment : Fragment(), View.OnClickListener, RadioGroup.OnCheck
                         binding.edEmail.text.toString(),
                         gender
                     )
-                    Log.e("body",body.toString())
-                    showLoadingDialog()
+                    Log.e("body", body.toString())
+
                     profileUpdate.fetchUpdateProfileDetailsResponse(body)
-                    GetUpdateProfileDetailsObservel()
+
                 }
             }
 

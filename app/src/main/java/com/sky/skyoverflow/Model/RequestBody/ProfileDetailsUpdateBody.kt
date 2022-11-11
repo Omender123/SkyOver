@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class ProfileDetailsUpdateBody(
     @SerializedName("FirstName") var FirstName: String,
-    @SerializedName("LastName") var LastName: String,
+    @SerializedName("LastName") var LastName: String? = null,
     @SerializedName("Mobile") var Mobile: String,
     @SerializedName("FatherHusbandName") var FatherHusbandName: String? = null,
     @SerializedName("DOB") var DOB: String? = null,
