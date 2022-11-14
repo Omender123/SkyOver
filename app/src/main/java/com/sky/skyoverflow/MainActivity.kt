@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity(), MenuItem.OnMenuItemClickListener, View
                 || destination.id == R.id.DTHRechargeFragment || destination.id == R.id.membeActivitionFragment || destination.id == R.id.shippingAddressFragment
                 || destination.id == R.id.deliveryAddressFragment || destination.id == R.id.paymentModeFragment || destination.id == R.id.orderHistoryFragment
                 || destination.id == R.id.totalEarningsFragment || destination.id == R.id.incomeFragment || destination.id == R.id.reHistoryFragment
-                || destination.id == R.id.BillFragment || destination.id == R.id.add_FundFragment
+                || destination.id == R.id.BillFragment || destination.id == R.id.add_FundFragment || destination.id == R.id.fundHistoryFragment
             ) {
                 binding.includedLayout.relative.visibility = View.VISIBLE
                 binding.includedLayout.toolbar.navigationIcon =

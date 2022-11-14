@@ -4,14 +4,12 @@ package com.sky.skyoverflow.remote
 import com.sky.skyoverflow.Model.RequestBody.ProfileDetailsUpdateBody
 import com.sky.skyoverflow.Model.RequestBody.ResgisterBody
 import com.sky.skyoverflow.Model.Response.*
+import kotlinx.coroutines.Deferred
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -94,6 +92,42 @@ interface ApiService {
         @Field("OldPassword") OldPassword: String?,
         @Field("NewPassword") NewPassword: String?,
         @Field("ConfirmPassword") ConfirmPassword: String?
+    ): Response<CommonRespons>
+
+    @Multipart
+    @POST("Authentication/FundDeposit")
+    suspend fun AddFundDeposit(
+        @Part("userid") userid: RequestBody,
+        @Part("Amount") Amount: RequestBody,
+        @Part("Paymentmode") Paymentmode: RequestBody,
+        @Part("Remarks") Remarks: RequestBody?,
+        @Part("walletType") walletType: RequestBody,
+        @Part file: MultipartBody.Part
+    ): Response<CommonRespons>
+
+
+    @GET("Authentication/CheckReferrel/{userID}")
+    suspend fun CheckReferrel(
+        @Path("userID") userID: String
+    ): Response<CheckReferrelResponse>
+
+    @FormUrlEncoded
+    @POST("Authentication/membertoMemberFundTransfer")
+    suspend fun membertoMemberFundTransfer(
+        @Field("SenderUserID") SenderUserID: String,
+        @Field("ReceiverUserID") ReceiverUserID: String,
+        @Field("Amount") Amount: String
+    ): Response<CommonRespons>
+
+
+    @FormUrlEncoded
+    @POST("Authentication/Recharge")
+    suspend fun MobileOrDTHRecharge(
+        @Field("sMobileNumber") sMobileNumber: String,
+        @Field("sRechargeType") sRechargeType: String,
+        @Field("sOperatorCode") sOperatorCode: String,
+        @Field("sAmount") sAmount: String,
+        @Field("sloginid") sloginid: String
     ): Response<CommonRespons>
 }
 

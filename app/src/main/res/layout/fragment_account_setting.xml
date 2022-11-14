@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="11dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="18dp"
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt1"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="11dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="18dp"
@@ -163,19 +163,77 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/txt2"
                 android:layout_alignParentStart="true"
-                android:layout_marginStart="11dp"
+                android:layout_marginStart="12dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="18dp"
                 android:layout_toStartOf="@+id/txt_main_view2"
                 android:fontFamily="@font/poppins_medium"
                 android:singleLine="true"
-                android:text="1534313123131"
                 android:textColor="#8A383838"
                 android:textSize="12dp" />
 
             <ImageView
                 android:id="@+id/txt_main_view2"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="25dp"
+                android:src="@drawable/ic_view_all" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="12dp"
+        android:visibility="gone"
+        app:cardElevation="5dp">
+
+        <RelativeLayout
+            android:id="@+id/lyt_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txt3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="15dp"
+                android:layout_toStartOf="@+id/txt_main_view3"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Permanent Address "
+                android:textColor="@color/txt_38"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/txt_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt3"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="18dp"
+                android:layout_toStartOf="@+id/txt_main_view3"
+                android:fontFamily="@font/poppins_medium"
+                android:singleLine="true"
+                android:textColor="#8A383838"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:id="@+id/txt_main_view3"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_alignParentEnd="true"

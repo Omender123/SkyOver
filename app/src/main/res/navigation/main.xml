@@ -91,6 +91,15 @@
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@id/BillFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_Dashboard_to_fundHistoryFragment"
+            app:destination="@id/fundHistoryFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/fundHistoryFragment"
+            app:popUpToInclusive="true" />
 
     </fragment>
     <fragment
@@ -360,4 +369,9 @@
             android:defaultValue="null"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/fundHistoryFragment"
+        android:name="com.sky.skyoverflow.Fragment.Dashboard.FundHistoryFragment"
+        android:label="Transaction History"
+        tools:layout="@layout/fragment_fund_history" />
 </navigation>

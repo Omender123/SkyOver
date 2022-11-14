@@ -69,10 +69,10 @@ class EditProfileFragment : Fragment(), View.OnClickListener, RadioGroup.OnCheck
 
         if (profileDetails?.gender.equals("0", true)) {
             binding.rdMale.isChecked = true
-            gender = "male"
+            gender = "0"
         } else if (profileDetails?.gender.equals("1", true)) {
             binding.rdFemale.isChecked = true
-            gender = "female"
+            gender = "1"
         }
 
         binding.rgGender.setOnCheckedChangeListener(this)
@@ -137,7 +137,13 @@ class EditProfileFragment : Fragment(), View.OnClickListener, RadioGroup.OnCheck
 
     override fun onCheckedChanged(p0: RadioGroup?, p1: Int) {
         val radioButton = p0?.findViewById(p1) as RadioButton
-        gender = radioButton.text.toString()
+
+            if (radioButton.text.toString().equals("Male", true)) {
+                gender = "0"
+            } else {
+                gender = "1"
+            }
+
 
     }
 

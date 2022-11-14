@@ -1,13 +1,17 @@
 package com.sky.skyoverflow.Utils
+
 import com.sky.skyoverflow.Utils.Constants.Companion.BASE_URL
 import com.sky.skyoverflow.remote.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -24,22 +28,22 @@ object NetworkModule {
             .Builder()
             .readTimeout(60, TimeUnit.SECONDS)
             .connectTimeout(60, TimeUnit.SECONDS)
-            . addInterceptor { chain ->
-            val original: Request = chain.request()
-            val requestBuilder: Request.Builder = original.newBuilder()
-                .addHeader("Accept", "application/json")
-                .addHeader("Content-Type", "application/json")
-                .addHeader("Authorization", "bearer ")
-            val request: Request = requestBuilder.build()
-            chain.proceed(request)
-        }
+            .addInterceptor { chain ->
+                val original: Request = chain.request()
+                val requestBuilder: Request.Builder = original.newBuilder()
+                    .addHeader("Accept", "application/json")
+                    .addHeader("Content-Type", "application/json")
+                    .addHeader("Authorization", "bearer ")
+                val request: Request = requestBuilder.build()
+                chain.proceed(request)
+            }
             .build()
     }
 
     @Singleton
     @Provides
     fun provideConverterFactory(): GsonConverterFactory =
-         GsonConverterFactory.create()
+        GsonConverterFactory.create()
 
     @Singleton
     @Provides
@@ -50,6 +54,7 @@ object NetworkModule {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(okHttpClient)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .addConverterFactory(gsonConverterFactory)
             .build()
     }

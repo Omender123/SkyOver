@@ -23,23 +23,36 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.sky.skyoverflow.R
+import com.sky.skyoverflow.SharedPerfence.MyPreferences
+import com.sky.skyoverflow.SharedPerfence.PrefConf
 import com.sky.skyoverflow.Utils.AppUtils
+import com.sky.skyoverflow.Utils.LoadingDialog
+import com.sky.skyoverflow.Utils.NetworkResult
+import com.sky.skyoverflow.ViewModel.AddFundViewModel
+import com.sky.skyoverflow.ViewModel.DeshboardViewModel
 import com.sky.skyoverflow.databinding.FragmentAddFundBinding
+import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.create
 import java.io.File
 
-
+@AndroidEntryPoint
 class Add_FundFragment : Fragment(), AdapterView.OnItemSelectedListener, View.OnClickListener {
     private lateinit var binding: FragmentAddFundBinding
+    lateinit var loadingDialog: LoadingDialog
     private var walletType: String? = null
     private var paymentMethod: String? = null
     var permissionStatus = false
     private val PICK_PHOTO_FOR_AVATAR = 1
     private var uri: Uri? = null
+    private var userId: String? = null
+    private val addFundViewModel: AddFundViewModel by viewModels()
+    private var file: File? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -63,6 +76,9 @@ class Add_FundFragment : Fragment(), AdapterView.OnItemSelectedListener, View.On
             R.layout.custom_spinner_layout
         )
 
+        loadingDialog = LoadingDialog(requireContext())
+        userId =
+            MyPreferences.getInstance(requireContext()).getString(PrefConf.USER_SPONSER_ID, "0")
         binding.walletsSpinner.adapter = adapterWallets
         binding.paymentSpinner.adapter = adapterPaymentMethod
 
@@ -70,7 +86,7 @@ class Add_FundFragment : Fragment(), AdapterView.OnItemSelectedListener, View.On
         binding.paymentSpinner.onItemSelectedListener = this
         binding.txtSend.setOnClickListener(this)
         binding.txtChoose.setOnClickListener(this)
-
+        AddFundObservel();
         return binding.root
     }
 
@@ -94,6 +110,7 @@ class Add_FundFragment : Fragment(), AdapterView.OnItemSelectedListener, View.On
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.txt_send -> {
@@ -121,8 +138,10 @@ class Add_FundFragment : Fragment(), AdapterView.OnItemSelectedListener, View.On
                     Toast.makeText(requireContext(), "please Choose File", Toast.LENGTH_SHORT)
                         .show()
                 } else {
-
+                    showLoadingDialog()
+                    uploadImage(userId!!, amount, paymentMethod!!, remarks, walletType!!, file!!);
                 }
+
             }
 
             R.id.txt_choose -> {
@@ -175,35 +194,54 @@ class Add_FundFragment : Fragment(), AdapterView.OnItemSelectedListener, View.On
                 return
             uri = data.getData()
             println("urii  " + uri + " " + uri!!.getPath())
-            val path =  getPath(uri)
+            val path = getPath(uri)
             println("urii path $path")
             if (path != null && path != "") {
                 binding.txtChoose.text = path
-                val file = File(path)
-                uploadImage(file)
+                file = File(path)
+
             }
         }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun uploadImage(file: File) {
-        /* helper?.saveCartProductId(PrefKeys.KEY_CART_PRODUCT_ID, it.productId)*/
+    private fun uploadImage(
+        userId: String,
+        amount: String,
+        paymentmode: String,
+        remarks: String,
+        walletType: String,
+        file: File
+    ) {
 
-        /*   val requestFile: RequestBody =
-               RequestBody.create("multipart/form-data".toMediaTypeOrNull(), file)
-           val profileImage: MultipartBody.Part =
-               MultipartBody.Part.createFormData("file", file.name, requestFile)*/
 
-     /*   val requestFile =
+        val requestFile =
             file.asRequestBody(requireContext().contentResolver.getType(uri!!)?.toMediaTypeOrNull())
-        val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
+        val body = MultipartBody.Part.createFormData("paySlip", file.name, requestFile)
 
-        val productId: RequestBody = create(
+        val UserId: RequestBody = create(
             "multipart/form-data".toMediaTypeOrNull(),
-            helper?.getCartProductId(PrefKeys.KEY_CART_PRODUCT_ID).toString()
+            userId
         )
-*/
+        val Amount: RequestBody = create(
+            "multipart/form-data".toMediaTypeOrNull(),
+            amount
+        )
+        val Paymentmode: RequestBody = create(
+            "multipart/form-data".toMediaTypeOrNull(),
+            paymentmode
+        )
+        val Remarks: RequestBody = create(
+            "multipart/form-data".toMediaTypeOrNull(),
+            remarks
+        )
 
+        val WalletType: RequestBody = create(
+            "multipart/form-data".toMediaTypeOrNull(),
+            walletType
+        )
+
+        addFundViewModel.addFundRequest(UserId, Amount, Paymentmode, Remarks, WalletType, body)
     }
 
 
@@ -224,6 +262,50 @@ class Add_FundFragment : Fragment(), AdapterView.OnItemSelectedListener, View.On
         val path: String = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA))
         cursor.close()
         return path
+    }
+
+    fun showLoadingDialog() {
+        if (this::loadingDialog.isInitialized && !loadingDialog.isShowing()) {
+            loadingDialog.show()
+        }
+    }
+
+    fun hideLoadingDialog() {
+        if (this::loadingDialog.isInitialized && loadingDialog.isShowing()) {
+            loadingDialog.dismiss()
+        }
+    }
+
+    private fun AddFundObservel() {
+
+        addFundViewModel.response.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is NetworkResult.Success -> {
+                    hideLoadingDialog()
+                    response.data?.let {
+                        Toast.makeText(requireContext(), it.Message, Toast.LENGTH_SHORT).show()
+                        requireActivity().onBackPressed()
+                        Log.e("datat", it.toString())
+                    }
+
+                }
+
+                is NetworkResult.Error -> {
+                    hideLoadingDialog()
+                    Toast.makeText(
+                        requireContext(),
+                        response.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                    Log.e("Error", response.message.toString())
+                }
+
+                is NetworkResult.Loading -> {
+                    showLoadingDialog()
+                }
+            }
+        }
     }
 
 
