@@ -90,6 +90,11 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
         sloginid
     )
 
+    suspend fun GetFundUploadHistory(userID: String) =
+        apiService.GetFundUploadHistory(userID)
+
+    suspend fun GetTransactionHistory(userID: String) =
+        apiService.GetTransactionHistory(userID)
 }
 
 

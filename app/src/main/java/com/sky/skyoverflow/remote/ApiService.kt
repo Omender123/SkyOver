@@ -129,5 +129,17 @@ interface ApiService {
         @Field("sAmount") sAmount: String,
         @Field("sloginid") sloginid: String
     ): Response<CommonRespons>
+
+    @GET("Authentication/GetFundUploadHistory/{userID}")
+    suspend fun GetFundUploadHistory(
+        @Path("userID") userID: String
+    ): Response<AddFundHistoryResponse>
+
+    @FormUrlEncoded
+    @POST("Authentication/GetTransactionHistory")
+    suspend fun GetTransactionHistory(
+        @Field("suserID") suserID: String
+    ): Response<FundTransactionResponse>
+
 }
 
